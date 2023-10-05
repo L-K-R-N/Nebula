@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Project-Hub/static/css/main.d261043c.css",
-    "main.js": "/Project-Hub/static/js/main.0948661c.js",
+    "main.js": "/Project-Hub/static/js/main.556fb7d5.js",
     "static/media/Comfortaa-400.woff2": "/Project-Hub/static/media/Comfortaa-400.ce7b212224d0aa3869a5.woff2",
     "static/media/Comfortaa-700.woff2": "/Project-Hub/static/media/Comfortaa-700.133b4cf2543f68a38147.woff2",
     "static/media/Comfortaa-300.woff2": "/Project-Hub/static/media/Comfortaa-300.1faa6f84231d1f07f283.woff2",
@@ -17,10 +17,10 @@
     "static/media/more.svg": "/Project-Hub/static/media/more.979f8801e0e70d29fdb0ebbd6f7efbab.svg",
     "static/media/plus.svg": "/Project-Hub/static/media/plus.db6a1b393f18fab9302cffaee47df564.svg",
     "main.d261043c.css.map": "/Project-Hub/static/css/main.d261043c.css.map",
-    "main.0948661c.js.map": "/Project-Hub/static/js/main.0948661c.js.map"
+    "main.556fb7d5.js.map": "/Project-Hub/static/js/main.556fb7d5.js.map"
   },
   "entrypoints": [
     "static/css/main.d261043c.css",
-    "static/js/main.0948661c.js"
+    "static/js/main.556fb7d5.js"
   ]
 }
