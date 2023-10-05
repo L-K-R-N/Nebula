@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Project-Hub/static/css/main.d261043c.css",
+    "main.js": "/Project-Hub/static/js/main.0948661c.js",
+    "static/media/Comfortaa-400.woff2": "/Project-Hub/static/media/Comfortaa-400.ce7b212224d0aa3869a5.woff2",
+    "static/media/Comfortaa-700.woff2": "/Project-Hub/static/media/Comfortaa-700.133b4cf2543f68a38147.woff2",
+    "static/media/Comfortaa-300.woff2": "/Project-Hub/static/media/Comfortaa-300.1faa6f84231d1f07f283.woff2",
+    "static/media/settings.svg": "/Project-Hub/static/media/settings.437737d333e52278c23ef670f7c95b5d.svg",
+    "static/media/bookmark.svg": "/Project-Hub/static/media/bookmark.2276d52c2d6d73f3b0e58c8a30414fe1.svg",
+    "static/media/watch.svg": "/Project-Hub/static/media/watch.7e294f23987ca7231575c325af9a1b95.svg",
+    "static/media/comment.svg": "/Project-Hub/static/media/comment.44d9ebd526c6abd271be044bdc9a7c75.svg",
+    "static/media/mark.svg": "/Project-Hub/static/media/mark.3f40709122f8b0b5fcd18d2688cd1ba0.svg",
+    "index.html": "/Project-Hub/index.html",
+    "static/media/user.svg": "/Project-Hub/static/media/user.e04455626dca7f7436ce1c36b9b3ce67.svg",
+    "static/media/search.svg": "/Project-Hub/static/media/search.01da7b90b09620b3b6c61977cfa584e0.svg",
+    "static/media/info.svg": "/Project-Hub/static/media/info.68cf370631161fbedf4808ffe059beae.svg",
+    "static/media/more.svg": "/Project-Hub/static/media/more.979f8801e0e70d29fdb0ebbd6f7efbab.svg",
+    "static/media/plus.svg": "/Project-Hub/static/media/plus.db6a1b393f18fab9302cffaee47df564.svg",
+    "main.d261043c.css.map": "/Project-Hub/static/css/main.d261043c.css.map",
+    "main.0948661c.js.map": "/Project-Hub/static/js/main.0948661c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d261043c.css",
+    "static/js/main.0948661c.js"
+  ]
+}
