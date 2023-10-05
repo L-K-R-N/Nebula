@@ -1,0 +1,16 @@
+/* Scss for used fonts */
+@import './fonts.scss';
+
+@import './reset.scss';
+
+// Normalize 
+@import './normalize.scss';
+
+/* Vars, which are specific for current project */
+@import './vars.scss';
+
+
+@import './mixins.scss';
+
+/* Common styles for current project */
+@import './index.scss';

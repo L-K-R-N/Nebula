@@ -1,0 +1,136 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.task-item {
+    background: $white;
+    border-radius: $main-br;
+    box-shadow: $secondary-shadow;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 3px solid $purple;
+    &__header, &__main, &__footer {
+        padding: 14px 10px;
+    }
+
+    &__header {
+        @include flex($gap: 10px);
+        background: $orange;
+    }
+
+    &__title {
+        font-size: $size-s;
+    }
+
+    &__control {
+        width: 30px;
+        cursor: pointer;
+        transition: $transition-main;
+        &:hover {
+            
+            filter: $filter-white;
+        }
+    }
+
+    &__main {
+        padding: 14px 10px 0 10px;
+        @include flex($direction: column, $align: stretch, $gap: 13px)
+    }
+
+    &__desc {
+        font-size: $size-xxs;
+        font-weight: 700;
+    }
+
+    &__footer {
+        @include flex();
+        // border-top: 1px solid $light-gray;
+    }
+
+    &__date, &__info {
+        color: $gray;
+        font-size: $size-xxxs;
+    }
+
+    &__date {
+
+        &-container {
+            @include flex($gap: 10px, $align: end)
+
+        }
+
+
+    }
+    &__info {
+        @include flex($gap: 10px);
+    }
+
+    &__notes, &__comments, &__date-img  {
+        cursor: pointer;
+        transition: $transition-main;
+        width: 20px;
+        height: 20px;
+        filter: $filter-gray;
+        &:hover {
+            filter: $filter-orange;
+        }
+    }
+
+    
+
+
+}
+
+
+@include media-max-m {
+    .task-item {
+       
+        
+        
+       
+    }
+}
+
+@include media-max-s {
+    .task-item {
+        &__title {
+            font-size: $size-xxxxs;
+        }
+
+        &__header {
+            padding: 8px 6px;
+        }
+        
+        &__control{
+            width: 16px;
+            height: 16px;
+        }
+
+        &__main {
+            padding: 10px 6px 0 6px;
+            gap: 9px;
+        }
+
+        &__footer{
+            padding: 6px;
+        }
+        
+        &__desc {
+            
+            font-size: $size-xxxxxs;
+            font-weight: 700;
+        }
+        
+        &__notes, &__date-img {
+            width: 14px;
+            height: 14px;
+        }
+
+        &__comments {
+            width: 16px;
+            height: 16px;
+        }
+       
+    }
+}

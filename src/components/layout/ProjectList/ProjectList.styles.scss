@@ -1,0 +1,23 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.project-list {
+    @include flex($justify: start, $gap: 40px, $direction: column);
+    height: auto;
+}
+
+@include media-max-m {
+    .project-list {
+        gap: 30px;
+        
+    }
+}
+
+@include media-max-s {
+    .project-list {
+        gap: 15px;
+        
+    }
+}

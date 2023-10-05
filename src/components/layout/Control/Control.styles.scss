@@ -1,0 +1,54 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.control {
+   
+    margin-bottom: 60px;
+
+    &__content {
+        @include flex();
+    }
+    &__button {
+        @include button-primary();
+        box-shadow: $bottom-shadow;
+        text-shadow: $bottom-text-shadow;
+    }
+}
+
+
+@include media-max-m {
+    .control {
+
+        &__content {
+            flex-direction: column;
+            gap: 30px;
+            align-items: start;
+        }
+
+        &__button {
+            width: 100%;
+        }
+
+        
+    }
+}
+
+@include media-max-s {
+    .control {
+        margin-bottom: 15px;
+
+        &__content {
+            gap: 10px;
+        }
+        &__button {
+            width: 100%;
+            padding: 10px 0;
+            font-size: $size-xxxxxs;
+        }
+
+       
+
+    }
+}

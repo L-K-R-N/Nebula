@@ -1,0 +1,206 @@
+// Utils
+@mixin absolute-vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@mixin absolute-horizontal-center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+// max-width queries
+@mixin media-max-s {
+	@media screen and (max-width: $breakpoint-small-max) {
+		@content;
+	}
+}
+@mixin media-max-m {
+	@media screen and (max-width: $breakpoint-medium-max) {
+		@content;
+	}
+}
+@mixin media-max-l {
+	@media screen and (max-width: $breakpoint-large-max) {
+		@content;
+	}
+}
+
+
+
+// Hover, Links
+// @mixin hover-opacity {
+// 	transition: $transition-main;
+// 	&:hover {
+// 		opacity: 0.7;
+// 	}
+// }
+
+// @mixin hover-scale($transition: $transition-slow) {
+// 	transition: $transition;
+
+// 	&:hover {
+// 		transform: scale(1.1);
+// 	}
+// }
+
+// @mixin link ($color: $color-text-second, $hover: $color-primary) {
+// 	color: $color;
+// 	transition: $transition-main;
+
+// 	&:hover {
+// 		color: $hover;
+// 	}
+// }
+
+
+
+// Fonts
+
+
+
+@mixin h2 {
+	font-weight: 700;
+	font-size: $size-xl;
+	line-height: 140%;
+	font-family: $font-family-primary;
+}	
+
+@mixin h3 {
+	font-weight: 600;
+	font-size: $size-l;
+	line-height: 140%;
+	font-family: $font-family-primary;
+}
+
+@mixin h5 {
+	font-weight: normal;
+	font-size: $size-m;
+	line-height: 100%;
+	font-family: $font-family-primary;
+}	
+
+@mixin text {
+	font-weight: normal;
+	font-size: $size-s;
+	line-height: 170%;
+	font-family: $font-family-primary;
+}	
+
+@mixin small-text {
+	font-weight: normal;
+	font-size: $size-xs;
+	line-height: 170%;
+	font-family: $font-family-primary;
+}	
+
+
+
+
+
+// UI
+
+@mixin button-primary ($bg-color: $orange, $text-color: $white, $hover-bg: $light-green ) {
+	padding: 20px 34px;
+    height: auto;
+    width: auto;
+	color: $text-color;
+	background: $bg-color;
+	border: none;
+	border-radius: $main-br;
+	transition: $transition-main;
+	font-size: $size-s;
+	
+	&:hover {
+		background: $hover-bg;
+		
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+}	
+
+// @mixin button-outline ($width: auto, $height: 64px, $bg-color: $color-bg, $text-color: $color-primary) {
+// 	width: $width;
+// 	height: $height;
+// 	color: $text-color;
+// 	background: $bg-color;
+// 	border: 1px solid $text-color;
+// 	border-radius: 999px;
+// 	padding: 15px 48px;
+// 	transition: $transition-main;
+
+// 	&:hover {
+// 		background: $text-color;
+// 		color: $bg-color;
+// 	}
+// }
+
+@mixin input (
+				$width: 360px, 
+				$height: auto, 
+				$text-color: $white, 
+				$bg-color: $dark-gray,
+				$border-color: $white,
+				
+				) {
+	width: $width;
+	height: $height;
+	padding: 20px 30px 16px 30px;
+	border-radius: $main-br;
+	font-size: $size-s;
+	color: $text-color;
+	background: $bg-color;
+	border-bottom: 4px solid $border-color;
+	// border: none;
+	transition: $transition-main;
+
+	&::placeholder {
+		color: $text-color; 
+	}
+
+	&:hover {
+		border-color: $orange;
+	}
+
+	&:focus {
+		border-color: $light-green;
+	}
+
+	&:active {
+		border-color: $light-red;
+	}
+}
+
+
+
+// displays
+@mixin grid ($columns, $rows, $gap: 0) {
+	display: grid;
+	display: -ms-grid;
+	grid-template-columns: $columns;
+	-ms-grid-columns: $columns;
+	-ms-grid-rows: $rows;
+	grid-rows: $rows;
+	gap: $gap;
+}
+
+@mixin flex ($align: center, $justify: space-between, $direction: row, $gap: 0) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	-ms-flex-direction: $direction;
+	flex-direction: $direction;
+	gap: $gap;
+}
+

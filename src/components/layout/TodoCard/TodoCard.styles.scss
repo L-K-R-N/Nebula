@@ -1,0 +1,95 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.todo-card {
+    border-radius: $main-br;
+    background-color: $soft-gray;
+    height: 700px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: $shadow;
+    
+    &__header {
+        @include flex();
+        background: $light-green;
+        padding: 8px 15px;
+        border-radius: $main-br;
+        border: 18px solid $dark-gray;
+        border-left: none;
+        border-right: none;
+    }
+
+    &__add {
+        width: 30px;
+        height: 30px;
+        filter: $filter-white;
+        cursor: pointer;
+        
+        &:hover {
+            filter: $filter-orange;
+        }
+    }
+    &__title {
+        color: $white;
+        font-size: $size-xl;
+        text-shadow: $bottom-text-shadow;
+    }
+
+    &__main {
+        padding: 20px 15px;
+        @include flex($direction: column, $gap: 30px)
+    }
+}
+
+@include media-max-m {
+    .todo-card {
+       
+        height: 500px;
+        width: 100%;
+
+        &__title {
+            font-size: $size-m;
+        }
+
+        &__add {
+            width: 24px;
+            height: 24px;
+        }
+
+
+        &__main {
+            gap: 15px;
+        }
+       
+    }
+}
+
+@include media-max-s {
+    .todo-card {
+       
+        height: 300px;
+        width: 100%;
+
+        &__header {
+            padding: 4px 8px;
+            border-width: 10px;
+        }
+        &__title {
+            font-size: $size-xs;
+        }
+
+        &__add {
+            width: 16px;
+            height: 16px;
+        }
+
+
+        &__main {
+            gap: 15px;
+            padding: 8px;
+        }
+       
+    }
+}

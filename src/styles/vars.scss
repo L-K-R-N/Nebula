@@ -1,0 +1,88 @@
+// Fonts
+$font-family-primary: "Comfortaa", sans-serif;
+
+$black: black; 
+$dark-gray: #2F2F2F;
+$gray: #747373;
+$light-gray: #bdbdbd;
+$soft-gray: #EBEBEB;
+$white: white;
+$light-blue: #74A8CD;
+$light-green: #90C795;
+$light-red: #DA8181;
+$orange: #FFA654;
+$border-color: #bfbebe;
+$purple: #C76CFF;
+
+
+// filter-colors
+$filter-black: invert(0%) sepia(90%) saturate(7460%) hue-rotate(346deg) brightness(89%) contrast(111%);
+$filter-dark-gray: invert(12%) sepia(7%) saturate(94%) hue-rotate(314deg) brightness(102%) contrast(84%);
+$filter-gray:invert(47%) sepia(1%) saturate(431%) hue-rotate(314deg) brightness(95%) contrast(86%);
+$filter-light-gray: invert(84%) sepia(0%) saturate(489%) hue-rotate(175deg) brightness(97%) contrast(78%);
+$filter-soft-gray: invert(84%) sepia(0%) saturate(23%) hue-rotate(278deg) brightness(114%) contrast(94%);
+$filter-white: invert(100%) sepia(100%) saturate(1%) hue-rotate(32deg) brightness(107%) contrast(101%);
+$filter-light-blue: invert(61%) sepia(61%) saturate(264%) hue-rotate(162deg) brightness(94%) contrast(87%);
+$filter-light-green: invert(83%) sepia(34%) saturate(324%) hue-rotate(73deg) brightness(85%) contrast(87%);
+$filter-light-red:invert(64%) sepia(18%) saturate(990%) hue-rotate(314deg) brightness(91%) contrast(87%);
+$filter-orange:invert(82%) sepia(11%) saturate(4195%) hue-rotate(320deg) brightness(103%) contrast(101%);
+$filter-border-color: invert(80%) sepia(0%) saturate(0%) hue-rotate(98deg) brightness(96%) contrast(91%);
+$filter-purple: invert(55%) sepia(34%) saturate(6086%) hue-rotate(238deg) brightness(104%) contrast(102%);
+
+
+
+// Font-sizes
+$size-xxxxxs: 10px;
+$size-xxxxs: 12px;
+$size-xxxs: 14px;
+$size-xxs: 16px;
+$size-xs: 18px;
+
+$size-s: 20px;
+$size-m: 24px;
+$size-l: 26px;
+$size-xl: 30px;
+$size-xxl: 34px;
+$size-xxxl: 38px;
+
+
+// Titles 
+
+// border-radius
+
+$main-br: 5px;
+$round-br: 999px;
+
+// borders
+$dividing-border: 1px solid $border-color;
+
+
+//Colors
+
+
+//Shadow
+
+$bottom-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.35);
+$right-shadow: 4px 0 4px 0 rgba(0, 0, 0, 0.35);
+$shadow: 0 0 12px 0 rgba(0, 0, 0, 0.65);
+$secondary-shadow: 0 0 6px 2px rgba(0, 0, 0, .25);
+// text-shadow
+
+$bottom-text-shadow: 0 4px 4px rgba(0, 0, 0, 0.35);
+$right-text-shadow: 4px 0 4px rgba(0, 0, 0, 0.35);
+$text-shadow: 0 0 12px rgba(0, 0, 0, 0.65);
+
+// Brand colors
+
+// Transitions 
+
+$transition-main: all 0.2s ease-out;
+$transition-slow: all 0.5s ease-out;
+
+// Breakpoints
+$breakpoint-small-max: 640px !default;
+$breakpoint-medium-max: 950px !default;
+//$breakpoint-xlarge-max: 1600px !default;
+
+
+

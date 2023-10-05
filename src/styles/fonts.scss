@@ -1,0 +1,16 @@
+@mixin font-face($name, $file, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: "#{$name}";
+		src: url("#{$file}.woff2") format("woff2");
+		font-weight: $weight;
+		font-style: $style;
+		font-display: swap;
+
+	}
+}
+
+@include font-face("Comfortaa", "../fonts/Comfortaa-300", 300, normal);
+@include font-face("Comfortaa", "../fonts/Comfortaa-400", 400, normal);
+// @include font-face("Comfortaa", "../fonts/Comfortaa-500", 500, normal);
+// @include font-face("Comfortaa", "../fonts/Comfortaa-600", 600, normal);
+@include font-face("Comfortaa", "../fonts/Comfortaa-700", 700, normal);

@@ -1,0 +1,28 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.todo-area {
+    margin-bottom: 60px;
+    
+    &__content {
+        @include flex();
+        width: auto;
+        height: auto;
+        gap: 30px;
+    }
+}
+
+@include media-max-m {
+    .todo-area {
+        margin-bottom: 40px;
+        
+        &__content {
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+    }
+}
+
