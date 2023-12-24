@@ -9,11 +9,10 @@ interface Props {
 
 export const ProjectList: React.FC<Props> = ({projects}) => {
 
-    const navigate = useNavigate()
     return (
         <div className="project-list">
             {projects.map((project) => 
-                <ProjectCard key={project.id} project={project} click={() => navigate(`/projects/:${project.id}`)}/>
+                <ProjectCard key={project.id} project={project}/>
             )}
         </div>
         

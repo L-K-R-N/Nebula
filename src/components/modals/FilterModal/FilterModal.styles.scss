@@ -1,0 +1,45 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+
+.filter-modal {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.462);
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+
+    &__content {
+        
+        width: 50%;
+        height: 70%;
+        position: absolute;
+        border-radius: $main-br;
+        background-color: rgb(255, 255, 255);
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(7px);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+
+    }
+
+    &__title {
+        font-size: $size-m;
+    }
+
+    &__header {
+        @include flex;
+        width: 100%;
+        padding: 10px 15px;
+        background: $dark-gray;
+        color: $white;
+    }
+
+    &__main {
+        padding: 10px 15px;
+    }
+    
+}

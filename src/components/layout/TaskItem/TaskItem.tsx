@@ -1,10 +1,10 @@
 
 import { ITask } from 'models/TodoCard.types';
 import './TaskItem.styles.scss';
-import moreIco from 'assets/more.svg'
-import markIco from 'assets/mark.svg'
-import commentIco from 'assets/comment.svg'
-import watchIco from 'assets/watch.svg'
+import moreIco from './assets/more.svg'
+import markIco from './assets/mark.svg'
+import commentIco from './assets/comment.svg'
+import watchIco from './assets/watch.svg'
 
 interface Props {
     task: ITask;

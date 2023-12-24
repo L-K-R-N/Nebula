@@ -1,38 +1,35 @@
 import {useMemo} from 'react';
 
 import { IProject } from "models/Project.types";
+import { SortingType } from 'models/Filter.types';
 
 
 
 
-export const useSortProjects = (projects: IProject[], sortBy: string) => {
-
-    
-
-    switch (sortBy) {
+export const useSortProjects = (projects: IProject[], sortingBy: SortingType) => {
+    const newProjects = [...projects]
+    switch (sortingBy) {
         case 'title':
-            return projects.sort((a, b) => a.title.localeCompare(b.title));
+            return newProjects.sort((a, b) => a.title.localeCompare(b.title));
             
         case 'desc':
-            return projects.sort((a, b) => a.desc.localeCompare(b.desc));
+            return newProjects.sort((a, b) => a.desc.localeCompare(b.desc));
             
-        // case 'date':
-        //     return projects.sort((a, b) => a.title.localeCompare(b.title));
+        case 'id':
+            return newProjects.sort((a, b) => a.id - b.id);
         default: 
-            return projects;
+            return newProjects;
     }
-    
     
 }
 
 
-export const useSearchProject = (projects: IProject[], request: string, sortBy: string) => {
+export const useSearchProject = (projects: IProject[], request: string) => {
 
-    const sortedProjects = useSortProjects(projects, sortBy);
     const searchedProjects = useMemo(() => {
         
-            return sortedProjects.filter((project) => project.title.toLowerCase().includes(request.toLowerCase()) 
-            )
+    return projects.filter((project) => project.title.toLowerCase().includes(request.toLowerCase()) 
+    )
          
     }, [request, projects]);
     

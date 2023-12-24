@@ -2,7 +2,7 @@
 import { ITodoCard } from 'models/TodoCard.types';
 import { TaskItem } from '../TaskItem/TaskItem';
 import './TodoCard.styles.scss';
-import plus from 'assets/plus.svg'
+import plus from './assets/plus.svg'
 interface Props {
     card: ITodoCard;
 

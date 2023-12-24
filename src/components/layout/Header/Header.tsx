@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './Header.styles.scss';
-import userIco from 'assets/user.svg';
-import bookmarkIco from 'assets/bookmark.svg';
-import settingsIco from 'assets/settings.svg';
+import userIco from './assets/user.svg';
+import bookmarkIco from './assets/bookmark.svg';
+import settingsIco from './assets/settings.svg';
 
 interface Props {
 
@@ -11,10 +11,11 @@ interface Props {
 export const Header: React.FC<Props> = () => {
 
     return (
+        <>
         <header className='header'>
 
             <div className="wrapper">
-               <div className="header__content">
+            <div className="header__content">
                 
                     <Link to={'/'} className="header__logo logo">
                         TODO LIST
@@ -40,9 +41,11 @@ export const Header: React.FC<Props> = () => {
                         </ul>
                     </nav>
                 
-               </div>
+            </div>
             </div>
         </header>
+        <Outlet />
+    </>
     )
 }
 

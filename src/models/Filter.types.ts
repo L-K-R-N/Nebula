@@ -1,0 +1,1 @@
+export type SortingType = 'title' | 'desc' | 'id' | 'date';

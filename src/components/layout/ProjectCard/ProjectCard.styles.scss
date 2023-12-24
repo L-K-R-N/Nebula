@@ -9,8 +9,8 @@
     height: auto;
     border-radius: $main-br;
     background: $dark-gray;
-    overflow: hidden;
     cursor: pointer;
+    
     transition: $transition-main;
     &:hover {
     }
@@ -46,6 +46,9 @@
     &__main {
         @include flex($gap: 140px);
         background: $dark-gray;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
         border-left: 3px solid $white;
     }
 

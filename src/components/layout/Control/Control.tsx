@@ -1,28 +1,25 @@
-import { useTypesSelector } from 'hooks/useTypesSelector';
+import { useState } from 'react';
 import { FilterForm } from '../FilterForm/FilterForm';
 import './Control.styles.scss';
-import { useActions } from 'hooks/useAction';
-import { useEffect } from 'react';
+import { AddProjectModal } from 'components/modals/AddProjectModal/AddProjectModal';
+
 
 interface Props {
 
 }
 
 export const Control: React.FC<Props> = () => {
-    const {projectRequest} = useTypesSelector(state => state.filter);
-    const {filterActionCreator} = useActions()
-
-    useEffect(() => {
-        console.log(projectRequest)
-    }, [projectRequest])
+    const [addModalShow, setModalShow] = useState(false)
     return (
         <div className="control">
             <div className="wrapper control__content">
-                <FilterForm 
-                    change={(e) => filterActionCreator(e.target.value)}
-                    value={projectRequest}
-                />
-                <button title="Добавить проект" className="control__button create-button">Добавить проект</button>
+                <FilterForm />
+                <button 
+                    title="Добавить проект" 
+                    className="control__button create-button"
+                    onClick={() => setModalShow(true)}
+                >Добавить проект</button>
+                <AddProjectModal isShow={addModalShow} setShow={setModalShow}/>
             </div>
         </div>
         

@@ -51,18 +51,16 @@ export const TodoPage: React.FC<Props> = () => {
     ])
     return (
         <div className="todo-page">
-            <Header/>
-            <main className="main">
-                <section className="todo-page-control">
-                    <div className="wrapper todo-page-control__content">
-                    <h2 className="todo-page-control__title">
-                        Название проекта
-                    </h2>
-                    {/* <FilterForm/> */}
-                    </div>
-                </section>
-                <TodoArea cards={cards}/>
-            </main>
+
+            <section className="todo-page-control">
+                <div className="wrapper todo-page-control__content">
+                <h2 className="todo-page-control__title">
+                    Название проекта
+                </h2>
+                {/* <FilterForm/> */}
+                </div>
+            </section>
+            <TodoArea cards={cards}/>
         </div>
     )
 }
