@@ -2,65 +2,39 @@ import { Header } from 'components/layout/Header/Header'
 import './TodoPage.styles.scss'
 import { FilterForm } from 'components/layout/FilterForm/FilterForm'
 import { TodoArea } from 'components/layout/TodoArea/TodoArea'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ITodoCard } from 'models/TodoCard.types'
+import { useParams } from 'react-router-dom'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { IProject } from 'models/Project.types'
 interface Props {
     
 }
 
 export const TodoPage: React.FC<Props> = () => {
-    const [cards, setCards] = useState<ITodoCard[]>([
-        {id: 1, 
-        tasks: [{id: 1, 
-                date: '01.10.2023', 
-                desc: 'Описание описание',
-                isFixed: true,
-                title: 'Создать to-do',
+    const {projects} = useAppSelector(state => state.ProjectsReducer)
+    const {id} = useParams();
+    const project = projects.find((p) => p.id === Number(id))
+    // const [project, setProject] = useState<IProject>()
+    useEffect(() => {
+        // console.log(project)
+        // setProject(projects.find((p) => p.id === Number(id)))
+    }, [project])
 
-                }],
-        title: 'Queue'
-        },
-        {id: 2, 
-        tasks: [{id: 1, 
-                date: '01.10.2023', 
-                desc: 'Описание описание',
-                isFixed: true,
-                title: 'Создать приложение to-do',
 
-                }],
-        title: 'Development'
-        },
-        {id: 3, 
-        tasks: [{id: 1, 
-                date: '01.10.2023', 
-                desc: 'Описание описание',
-                isFixed: true,
-                title: 'Создать приложение to-do',
-
-                },
-                {id: 2, 
-                    date: '20.09.2023', 
-                    desc: 'Описание описание описание',
-                    isFixed: false,
-                    title: 'Создать приложение to-do',
     
-                    },
-                ],
-        title: 'Done'
-        },
-    ])
     return (
         <div className="todo-page">
 
-            <section className="todo-page-control">
+            {/* <section className="todo-page-control">
                 <div className="wrapper todo-page-control__content">
-                <h2 className="todo-page-control__title">
-                    Название проекта
-                </h2>
-                {/* <FilterForm/> */}
+                
+                <FilterForm/>
                 </div>
-            </section>
-            <TodoArea cards={cards}/>
+            </section> */}
+            {project && 
+                <TodoArea project={project}/>
+            }
         </div>
     )
 }

@@ -6,9 +6,8 @@
 .todo-card {
     border-radius: $main-br;
     background-color: $soft-gray;
-    height: 700px;
+    height: 100%;
     width: 100%;
-    overflow: hidden;
     box-shadow: $shadow;
     
     &__header {
@@ -39,7 +38,7 @@
 
     &__main {
         padding: 20px 15px;
-        @include flex($direction: column, $gap: 30px)
+        @include flex($direction: column, $gap: 20px)
     }
 }
 
@@ -60,7 +59,7 @@
 
 
         &__main {
-            gap: 15px;
+            gap: 10px;
         }
        
     }
@@ -87,7 +86,7 @@
 
 
         &__main {
-            gap: 15px;
+            gap: 10px;
             padding: 8px;
         }
        

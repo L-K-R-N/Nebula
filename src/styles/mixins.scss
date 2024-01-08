@@ -119,7 +119,8 @@
 	border-radius: $main-br;
 	transition: $transition-main;
 	font-size: $size-s;
-	
+	box-shadow: $bottom-shadow;
+        text-shadow: $bottom-text-shadow;
 	&:hover {
 		background: $hover-bg;
 		
@@ -154,6 +155,8 @@
 				$border-color: $white,
 				
 				) {
+    border: none;
+
 	width: $width;
 	height: $height;
 	padding: 20px 30px 16px 30px;
@@ -161,6 +164,10 @@
 	font-size: $size-s;
 	color: $text-color;
 	background: $bg-color;
+	font-weight: 400;
+	box-shadow: $bottom-shadow;
+        text-shadow: $bottom-text-shadow;
+
 	border-bottom: 4px solid $border-color;
 	// border: none;
 	transition: $transition-main;

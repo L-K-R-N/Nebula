@@ -1,1 +1,1 @@
-export type SortingType = 'title' | 'desc' | 'id' | 'date';
+export type TSorting = 'title' | 'desc' | 'date';

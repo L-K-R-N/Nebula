@@ -2,24 +2,30 @@
 @import 'styles/mixins';
 @import 'styles/fonts';
 
-.todo-page-control {
-    padding: 18px 0;
-    background: $dark-gray;
-    margin-bottom: 60px;
-    &__content {
-        @include flex();
-        gap: 30px;
-    }
+.todo-page {
+    height: 85%;
+    @include flex($align: stretch, $justify: stretch, $direction: column);
 
-    &__title {
-        font-size: $size-xxxl;
-        text-align: center;
-        padding: 13px 55px;
-        border-radius: $main-br;
-        background: $light-green;
-        color: $white;
-        text-shadow: $bottom-text-shadow;
-    }
+
+    &-control {
+        padding: 18px 0;
+        background: $dark-gray;
+        
+        &__content {
+            @include flex();
+            gap: 30px;
+        }
+    
+        &__title {
+            font-size: $size-xxxl;
+            text-align: center;
+            padding: 13px 55px;
+            border-radius: $main-br;
+            background: $light-green;
+            color: $white;
+            text-shadow: $bottom-text-shadow;
+        }
+}
 
     .filter-form {
 

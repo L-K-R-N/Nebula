@@ -1,0 +1,46 @@
+@import 'styles/vars';
+@import 'styles/mixins';
+@import 'styles/fonts';
+
+
+.comment {
+    @include flex($direction: column, $gap: 10px, $justify: stretch, $align: stretch);
+    width: 100%;
+    height: auto;
+    background: $dark-gray;
+    border-radius: $main-br;
+    border: 5px solid $orange;
+    border-top: none;
+    border-bottom: none;
+    padding: 12px 10px;
+    color: white;
+    
+    &-header {
+        @include flex();
+
+        &__content {
+            @include flex();
+            gap: 8px;
+        }
+
+        &__title {
+            letter-spacing: 2px;
+        }
+
+        &__date {
+            opacity: 0.6;
+            font-weight: 200;
+        }
+    }
+    
+    &-main {
+        @include flex($justify: start);
+        margin-bottom: 8px;
+    }
+    &-footer {
+        @include flex($justify: start, $gap: 15px);
+        
+    }
+
+    
+}

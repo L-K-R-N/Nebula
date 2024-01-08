@@ -21,6 +21,10 @@ body {
 		overflow: hidden;
 	}
 }
+
+#root {
+	height: 100vh;
+}
 main {
 	flex-grow: 1;
 }
@@ -39,6 +43,23 @@ main {
 .wrapper {
 	height: 100%;
 	max-width: 1500px;
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+	@include media-max-m {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+	@include media-max-s {
+		max-width: 100vw;
+	}
+}
+
+.big-wrapper {
+	height: 100%;
+	max-width: 1800px;
 	width: 100%;
 	margin: 0 auto;
 	height: 100%;

@@ -1,12 +1,13 @@
 import {useMemo} from 'react';
 
 import { IProject } from "models/Project.types";
-import { SortingType } from 'models/Filter.types';
+import { TSorting } from 'models/Filter.types';
+import { compareAsc, parse } from 'date-fns';
 
 
 
 
-export const useSortProjects = (projects: IProject[], sortingBy: SortingType) => {
+export const useSortProjects = (projects: IProject[], sortingBy: TSorting) => {
     const newProjects = [...projects]
     switch (sortingBy) {
         case 'title':
@@ -15,8 +16,8 @@ export const useSortProjects = (projects: IProject[], sortingBy: SortingType) =>
         case 'desc':
             return newProjects.sort((a, b) => a.desc.localeCompare(b.desc));
             
-        case 'id':
-            return newProjects.sort((a, b) => a.id - b.id);
+        case 'date':
+            return newProjects.sort((a, b) => compareAsc(parse(b.date, 'dd.mm.yyyy', new Date()), parse(a.date, 'dd.mm.yyyy', new Date())));
         default: 
             return newProjects;
     }

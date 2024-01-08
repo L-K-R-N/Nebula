@@ -7,16 +7,16 @@
     background: $white;
     border-radius: $main-br;
     box-shadow: $secondary-shadow;
-    overflow: hidden;
     width: 100%;
     border-bottom: 3px solid $purple;
     &__header, &__main, &__footer {
-        padding: 14px 10px;
+        padding: 8px 10px;
     }
 
     &__header {
-        @include flex($gap: 10px);
+        @include flex($gap: 6px);
         background: $orange;
+        border-radius: $main-br;
     }
 
     &__title {
@@ -35,7 +35,7 @@
 
     &__main {
         padding: 14px 10px 0 10px;
-        @include flex($direction: column, $align: stretch, $gap: 13px)
+        @include flex($direction: column, $align: stretch, $gap: 6px)
     }
 
     &__desc {

@@ -22,36 +22,7 @@
         }
     }
 
-    &__list {
-        @include flex();
-        gap: 30px;
-        font-size: $size-s;
-        
-        &-item {
-            font-family: $font-family-primary;
-        }
-        &-link {
-            color: $white;
-            text-decoration: none;
-            transition: $transition-main;
-
-            &:hover {
-                color: $light-red;
-            }
-        }
-
-        &-img {
-            width: 44px;
-            height: 44px;
-            transition: $transition-main;
-            filter: $filter-white;
-            filter: $filter-light-gray;
-
-            &:hover {
-                filter: $filter-light-blue;
-            }
-        }
-    }
+    
 
     
 }

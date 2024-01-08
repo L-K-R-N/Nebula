@@ -28,7 +28,7 @@ const MoreContainer = styled.div<MoreContainerProps>`
     width: ${(props) => props.width ? props.width : "30px"};
     height: ${(props) => props.height ? props.height : "30px"};
     position: relative;
-    
+    cursor: pointer;
 `
 
 interface MoreContainerProps {
@@ -47,6 +47,8 @@ const ActionList = styled.div<ActionListProps>`
     align-items: center;
     justify-content: start;
     flex-direction: column;    
+    z-index: 8000;
+    box-shadow: 0px 0px 4px 0 #0000009a;
 `
 
 interface ActionListProps {
@@ -86,6 +88,7 @@ export const MoreBtn: React.FC<Props> = ({color, list, containerStyle}) => {
             height={containerStyle?.height}
             onPointerOver={() => setVisible(true)}
             onPointerLeave={() => setVisible(false)}
+            onClick={(e) => e.stopPropagation()}
         >         
             <MoreIcon color={color}/>
 

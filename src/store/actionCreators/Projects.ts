@@ -1,19 +1,67 @@
 import { createAction } from "@reduxjs/toolkit";
+import { INote, IProject } from "models/Project.types";
+import { IOption } from "models/Select.types";
+import { IComment, ITask } from "models/TodoCard.types";
 
-export interface IProjectUpdate {
+
+
+export const updateProject = createAction<IProject, "projects/updateProject">("projects/updateProject")
+
+
+
+
+export const updateProjectImportant = createAction<IProjectImportantUpdate, "projects/updateProjectImportant">("projects/updateProjectImportant")
+
+export interface IProjectImportantUpdate {
     projectId: number;
-    newTitle: string;
-    newDesc: string;
-    newNotes: string[];
     isImportant: boolean;
 }
 
-export const updateProject = createAction<IProjectUpdate, "projects/updateProject">("projects/updateProject")
 
 
-export interface IImportantUpdate {
+export const updateProjectNotes = createAction<IProjectNotesUpdate, "projects/updateProjectNotes">("projects/updateProjectNotes")
+
+export interface IProjectNotesUpdate {
     projectId: number;
-    isImportant: boolean;
+    notes: INote[];
 }
 
-export const updateImportant = createAction<IImportantUpdate, "projects/updateImportant">("projects/updateImportant")
+
+export const updateTasks = createAction<ITasksUpdate, "projects/updateTasks">("projects/updateTasks")
+
+export interface ITasksUpdate {
+    projectId: number;
+    tasks: ITask[];
+}
+
+export const updateTask = createAction<ITaskUpdate, "projects/updateTask">("projects/updateTask")
+
+
+export interface ITaskUpdate {
+    projectId: number;
+    taskId: number;
+    newTask: ITask;
+}
+
+
+export const updateTaskComments = createAction<ITaskCommentsUpdate, "projects/updateTaskComments">("projects/updateTaskComments")
+
+
+export interface ITaskCommentsUpdate {
+    projectId: number;
+    taskId: number;
+    comments: IComment[];
+}
+
+
+
+export const updateTaskComment = createAction<ITaskCommentUpdate, "projects/updateTaskComment">("projects/updateTaskComment")
+
+
+export interface ITaskCommentUpdate {
+    projectId: number;
+    taskId: number;
+    commentId: number;
+    newComment: IComment;
+}
+

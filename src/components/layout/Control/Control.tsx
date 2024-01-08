@@ -12,7 +12,7 @@ export const Control: React.FC<Props> = () => {
     const [addModalShow, setModalShow] = useState(false)
     return (
         <div className="control">
-            <div className="wrapper control__content">
+            <div className="big-wrapper control__content">
                 <FilterForm />
                 <button 
                     title="Добавить проект" 

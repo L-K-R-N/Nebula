@@ -1,59 +1,134 @@
 
 import './ChangeProjectModal.styles.scss'
-
 import { useAppDispatch } from 'hooks/useAppDispatch';
-
-import { useAppSelector } from 'hooks/useAppSelector';
 import { Modal } from 'components/UI/Modal';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { setProjects } from 'store/reducers/ProjectsSlice';
-
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { IProject, Inputs } from 'models/Project.types';
+import { updateProject } from 'store/actionCreators/Projects';
+import Select from 'react-select/creatable';
+import { useEffect } from 'react';
+import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
 interface Props {
     isShow: boolean;
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
+    project: IProject;
 }
 
-interface Inputs {
-    title: string;
-    desc: string;
-}
 
-export const ChangeProjectModal: React.FC<Props> = ({isShow, setShow}) => {
+
+export const ChangeProjectModal: React.FC<Props> = ({isShow, setShow, project}) => {
     const dispatch = useAppDispatch()
-    const {projects} = useAppSelector(state => state.ProjectsReducer) 
-    const currentDate = new Date();
     // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
 
     const {
         register,
+        // watch,
+        control,
+        reset,
         handleSubmit,
+        setValue,
         formState: {
             errors
         }
     } = useForm<Inputs>()
     
+    // const watchTitle = watch("title", project.title)
+    useEffect(() => {
+        setValue('desc', project.desc);
+        setValue('title', project.title);
+        setValue('notes', project.notes);
+    }, [project])
+
+
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        dispatch(setProjects([...projects, {
-            id: Date.now(),
-            date: `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`,
+        dispatch(updateProject({
+            id: project.id,
+            date: project.date,
+            isImportant: project.isImportant,
             desc: data.desc,
             title: data.title,
-            notes: [],
-            isImportant: false,
-        }]))
-
+            notes: data.notes,
+            tasks: project.tasks
+        }))
+        reset()
         setShow(false)
     }
+
+    // useEffect(() => {
+    //     const subscription = watch((value, { name, type }) =>
+    //       console.log(value, name, type)
+    //     )
+    //     return () => subscription.unsubscribe()
+    //   }, [watch])
  
     return (
-        <Modal title='Создание проекта' setShow={setShow} isShow={isShow}>
-            <form className="add-project-form" onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register("title", {required: true})}/>
-                {errors.title && <span>Введите название</span>}
-                <input type="text" {...register("desc", {required: true})}/>
-                {errors.desc && <span>Введите описание</span>}
+        <Modal title='Изменение проекта' setShow={setShow} isShow={isShow}>
+            <form className="change-project-form" onSubmit={handleSubmit(onSubmit)}>
 
-                <button type='submit' title='Создать пост'>Создать</button>
+
+                <div className="change-project-form__elem">
+                    <Controller
+                        name="title"
+                        control={control}
+                        rules={{required: "Введите название"}}
+                        defaultValue={project.title}
+                        render={({field}) => (
+                            <input 
+                                className="change-project-form__input"
+                                placeholder='Введите название'
+                                title='Введите название'
+                                value={field.value} 
+                                onChange={field.onChange}
+                            />
+                        )}
+                    />
+                    {errors.title && <span>{errors.title.message}</span>}
+                </div>
+
+                <div className="change-project-form__elem">
+                    <Controller
+                        name="desc"
+                        control={control}
+                        rules={{required: "Введите описание"}}
+                        defaultValue={project.desc}
+                        render={({field}) => (
+                            <input  
+                                className="change-project-form__input"
+                                placeholder='Введите описание'
+                                title='Введите описание'
+                                value={field.value} 
+                                onChange={field.onChange}
+                            />
+                        )}
+                    />
+                    {errors.desc && <span>{errors.desc.message}</span>}
+                </div>
+
+                <Controller 
+                    
+                    name="notes"
+                    control={control}
+                    render={({field}) => (
+                        <Select
+                            
+                            placeholder="Введите заметки"
+                            styles={SelectStyles}
+                            {...field}
+
+                            
+                            isMulti
+                            options={[]}
+                            onChange={(newValue) => {
+                                field.onChange(newValue)
+                            }}
+                        />
+                    )}
+                />
+                <button 
+                    type='submit' 
+                    title="Сохранить изменения"
+                    className='change-project-form__button'
+                >Сохранить изменения</button>
             </form>
         </Modal>
     )

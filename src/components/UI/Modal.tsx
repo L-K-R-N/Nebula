@@ -11,7 +11,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
     z-index: 9999;
     top: 0;
     left: 0;
-
+    overflow: hidden;
     display: ${(props) => props.isShow ? "block" : "none"};
 `
 
@@ -20,8 +20,10 @@ interface ModalContainerProps {
 }
 
 const ModalContent = styled.div`
-    width: 50%;
-    height: 70%;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 70%;
     position: absolute;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
@@ -39,7 +41,7 @@ const ModalHeader = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 15px;
+    padding: 15px 15px;
     background: #2F2F2F;
     color: white;
 `

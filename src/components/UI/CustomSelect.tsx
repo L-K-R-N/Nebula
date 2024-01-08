@@ -1,7 +1,7 @@
 import { IOption } from 'models/Select.types';
 import React, { CSSProperties, useState } from 'react';
 
-import Select, { ActionMeta, SingleValue } from 'react-select';
+import Select, { ActionMeta, SingleValue, StylesConfig } from 'react-select';
 // import {
 //   ColourOption,
 //   colourOptions,
@@ -41,15 +41,16 @@ import Select, { ActionMeta, SingleValue } from 'react-select';
 
 
 interface Props {
-    options: IOption<string>[];
-    // value: IOption<string>;
-    handleChange: (newValue: SingleValue<IOption<string>>) => void;
+    options: IOption[];
+    // value: IOption;
+    handleChange: (newValue: SingleValue<IOption>) => void;
+    styles: StylesConfig
 }
 
-export const CustomSelect: React.FC<Props> = ({options, handleChange}) => { 
+export const CustomSelect: React.FC<Props> = ({options, handleChange, styles}) => { 
     // const [selectedOption, setSelectedOption] = useState(null);
  
-    // const handleChange = (newValue: SingleValue<IOption<string>>) => {
+    // const handleChange = (newValue: SingleValue<IOption>) => {
     // //   setSelectedOption(selectedOption);
     //   console.log(`Option selected:`, newValue);
     // };

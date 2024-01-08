@@ -2,8 +2,6 @@ import { IoClose } from "react-icons/io5";
 import styled from "styled-components";
 import { BtnIcon } from "./BtnIcon";
 import { BsBookmarkDashFill } from "react-icons/bs";
-import { IImportantUpdate } from "store/actionCreators/Projects";
-import { useAppDispatch } from "hooks/useAppDispatch";
 import React from "react";
 
 

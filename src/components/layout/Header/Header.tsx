@@ -1,12 +1,34 @@
 import { Link, Outlet } from 'react-router-dom';
 import './Header.styles.scss';
-import userIco from './assets/user.svg';
-import bookmarkIco from './assets/bookmark.svg';
-import settingsIco from './assets/settings.svg';
+import { NavBar } from '../NavBar/NavBar';
+import { ILink } from 'models/NavBar.types';
+import { FaUser } from "react-icons/fa";
+import { FaUserFriends } from "react-icons/fa";
+import { HiUsers } from "react-icons/hi";
+import { FaUserPlus } from "react-icons/fa";
 
+import { BsBookmarkDashFill } from "react-icons/bs";
 interface Props {
 
 }
+
+
+
+const navLinks: ILink[] = [
+    
+    // {
+    //     to: "friends",
+    //     children: <FaUserPlus/>
+    // },
+    {
+        to: "/importants",
+        children: <BsBookmarkDashFill/>
+    },
+    {
+        to: "/profile",
+        children: <FaUser/>
+    },
+]
 
 export const Header: React.FC<Props> = () => {
 
@@ -14,32 +36,13 @@ export const Header: React.FC<Props> = () => {
         <>
         <header className='header'>
 
-            <div className="wrapper">
+            <div className="big-wrapper">
             <div className="header__content">
                 
-                    <Link to={'/'} className="header__logo logo">
+                    <Link to={'/Project-Hub'} className="header__logo logo">
                         TODO LIST
                     </Link>
-                    <nav className="menu header__menu">
-                        <ul className="header__list list">
-                            <li className="header__list-item list-item">
-                                <a href="" className="header__list-link list-link">
-                                    <img className="header__list-img" src={settingsIco} alt="" />
-                                </a>
-                            </li>
-                            <li className="header__list-item list-item">
-                                <a href="" className="header__list-link list-link">
-                                <img className="header__list-img" src={userIco} alt="" />
-                                </a>
-                            </li>
-                        
-                            <li className="header__list-item list-item">
-                                <a href="" className="header__list-link list-link">
-                                    <img className="header__list-img" src={bookmarkIco} alt="" />
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <NavBar links={navLinks}/>
                 
             </div>
             </div>
