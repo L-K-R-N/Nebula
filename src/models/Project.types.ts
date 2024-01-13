@@ -5,10 +5,16 @@ export interface IProject {
     id: number;
     title: string;
     desc: string;
-    date: string;
+    date: Date;
     notes: INote[];
     isImportant: boolean;
-    tasks: ITask[]
+    tasks: ICards
+}
+
+export interface ICards {
+    queue: ITask[];
+    development: ITask[];
+    done: ITask[];
 }
 
 export interface Inputs {

@@ -1,7 +1,7 @@
 
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TSorting } from "models/Filter.types";
+import { ISortingOption, TSorting } from "models/Filter.types";
 
 
 // export interface projectRequestAction {
@@ -33,12 +33,15 @@ import { TSorting } from "models/Filter.types";
 
 export interface IFilterState {
     search: string;
-    sortingBy: TSorting;
+    sortingBy: ISortingOption;
 }
 
 const initialState: IFilterState = {
     search: '',
-    sortingBy: 'title'
+    sortingBy: {
+        label: "По названию",
+        value: "title"
+    }
 }
 
 
@@ -51,7 +54,7 @@ export const FilterSlice = createSlice({
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
         },
-        setSorting: (state, action: PayloadAction<TSorting>) => {
+        setSorting: (state, action: PayloadAction<ISortingOption>) => {
             state.sortingBy = action.payload;
         }
     }

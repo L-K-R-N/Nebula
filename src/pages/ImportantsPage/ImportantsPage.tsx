@@ -2,7 +2,7 @@ import { Header } from "components/layout/Header/Header"
 import './ImportantsPage.styles.scss'
 import { Control } from "components/layout/Control/Control"
 import { Projects } from "components/layout/Projects/Projects"
-import { useAppSelector } from "store"
+import { useAppSelector } from "hooks/useAppSelector"
 
 
 interface Props {

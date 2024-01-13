@@ -33,11 +33,7 @@ export const SelectStyles: StylesConfig = {
             
         },
         
-        ":placeholder-shown": {
-            ...styles[':placeholder-shown'],
-            color: 'white',
-
-        },
+        
     }),
     valueContainer: (styles, state) => ({
         ...styles,
@@ -49,6 +45,7 @@ export const SelectStyles: StylesConfig = {
     placeholder: (styles, state) => ({
         ...styles,
         color: 'white',
+        opacity: 0.65,
         padding: 0,
         margin: 0       
     }),

@@ -18,6 +18,8 @@
         padding: 22px 30px;
     }
 
+    
+
     &__header {
         @include flex();
         background-color: $white;
@@ -26,14 +28,21 @@
     }
 
     &__info {
+        // @include flex($align: end);
+        // gap: 10px;
         color: $black;
         font-size: $size-l;
         font-weight: 700;
+        
+    }
+
+    &__title {
+        margin-right: 10px;
     }
 
     &__date {
         color: $gray;
-        font-size: $size-s;
+        font-size: $size-xxs;
         letter-spacing: 1px;
         font-weight: 400;
     }
@@ -58,21 +67,9 @@
         
     }
 
-    &__important {
-        filter: $filter-light-blue;
-        &:hover {
-            opacity: 0.7;
-        }
-        
-    }
+    
 
-    &__change {
-        width: 40px;
-        height: 40px;
-        &:hover {
-            filter: $filter-light-blue;
-        }
-    }
+    
     &__desc {
         font-size: $size-s;
         font-weight: 300;

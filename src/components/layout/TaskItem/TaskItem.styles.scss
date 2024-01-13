@@ -7,20 +7,29 @@
     background: $white;
     border-radius: $main-br;
     box-shadow: $secondary-shadow;
+    max-width: 100%;
     width: 100%;
     border-bottom: 3px solid $purple;
+    cursor: grab;
+
+    &-container {
+        width: 100%;
+    }
     &__header, &__main, &__footer {
-        padding: 8px 10px;
+        padding: 4px 10px;
     }
 
     &__header {
         @include flex($gap: 6px);
         background: $orange;
         border-radius: $main-br;
+        max-width: 100%;
+        height: auto;
     }
 
     &__title {
         font-size: $size-s;
+        max-width: 50%;
     }
 
     &__control {
@@ -34,7 +43,7 @@
     }
 
     &__main {
-        padding: 14px 10px 0 10px;
+        padding: 7px 10px 0 10px;
         @include flex($direction: column, $align: stretch, $gap: 6px)
     }
 
@@ -54,10 +63,27 @@
     }
 
     &__date {
+        font-size: $size-xxxxs;
+        @include flex();
+        color: $gray;
+        cursor: pointer;
 
+        opacity: 0.7;
+        transition: $transition-main;
+
+        &:hover {
+            opacity: 1;
+        }
+        gap: 8px;
         &-container {
             @include flex($gap: 10px, $align: end)
 
+        }
+
+        &_ico {
+        width: 17px;
+        height: 17px;
+        
         }
 
 
@@ -66,14 +92,15 @@
         @include flex($gap: 10px);
     }
 
-    &__notes, &__comments, &__date-img  {
+    &__notes, &__comments {
         cursor: pointer;
         transition: $transition-main;
-        width: 20px;
-        height: 20px;
-        filter: $filter-gray;
+        width: 17px;
+        height: 17px;
+        color: $gray;
+        opacity: 0.7;
         &:hover {
-            filter: $filter-orange;
+            opacity: 1;
         }
     }
 

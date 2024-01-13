@@ -3,19 +3,23 @@ import {combineReducers} from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 import FilterReducer from './reducers/FilterSlice'
 import ProjectsReducer from './reducers/ProjectsSlice'
-import { TypedUseSelectorHook, useSelector } from 'react-redux'
+import UserReducer from './reducers/UserSlice'
 // export const store = createStore(rootReducer)
 
 const rootReducer = combineReducers({
     FilterReducer,
-    ProjectsReducer
+    ProjectsReducer,
+    UserReducer,
 })
 
 export const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

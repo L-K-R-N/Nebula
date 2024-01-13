@@ -39,7 +39,7 @@ interface MoreContainerProps {
 const ActionList = styled.div<ActionListProps>`
 
     position: absolute;
-    left: 0;
+    right: 0;
     top: 100%;
     border-radius: 5px;
     background-color: #EBEBEB;

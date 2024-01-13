@@ -1,16 +1,20 @@
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 import './AddTaskModal.styles.scss'
 import { useAppDispatch } from 'hooks/useAppDispatch';
-
-import { useAppSelector } from 'hooks/useAppSelector';
 import { Modal } from 'components/UI/Modal';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { setProjects } from 'store/reducers/ProjectsSlice';
 import Select from 'react-select/creatable';
-import {INote, IProject, Inputs } from 'models/Project.types';
-import { format } from 'date-fns';
+import {INote, IProject } from 'models/Project.types';
 import { updateTasks } from 'store/actionCreators/Projects';
 import { IDates, ITodoCard, TTaskStatus } from 'models/TodoCard.types';
 import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
+import DatePicker from 'react-date-picker';
+import { FaCalendar } from "react-icons/fa";
+import styled from 'styled-components';
+import { GrClose } from "react-icons/gr";
+import { useState } from 'react';
+
 // import CreatableSelect from 'react-select/Creatable';
 interface Props {
     isShow: boolean;
@@ -20,14 +24,33 @@ interface Props {
 }
 
 
-interface ITaskInputs {
+export interface ITaskInputs {
     status: TTaskStatus;
-    date: IDates;
+    date: Date;
     title: string;
     desc: string;
     notes: INote[];
    
 }
+
+export const StyledCalendar = styled(FaCalendar)`
+    color: white;
+    opacity: 0.7;
+    height: 100%;
+
+    &:hover {
+        opacity: 1;
+    }
+`
+export const StyledClose = styled(GrClose)`
+    color: white;
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    &:hover {
+        opacity: 1;
+    }
+`
 
 
 
@@ -35,6 +58,10 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
     const dispatch = useAppDispatch()
     const currentDate = new Date();
     // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
+
+    // const onChangeDate = (date: ) => {
+    //     const dateValue = date.toDate()
+    // }
 
     const {
         handleSubmit,
@@ -49,14 +76,15 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
     const onSubmit: SubmitHandler<ITaskInputs> = (data) => {
         dispatch(updateTasks({
             projectId: project.id,
-            tasks: [...project.tasks, {
+            cardTitle: card.title,
+            tasks: [...project.tasks[card.title], {
                 title: data.title,
                 desc: data.desc,
                 notes: data.notes,
                 date: {
-                    creation: format(currentDate, 'dd.MM.yyyy'),
-                    completion: format(currentDate, 'dd.MM.yyyy'),
-                    change: format(currentDate, 'dd.MM.yyyy'),
+                    creation: currentDate,
+                    completion: data.date,
+                    change: currentDate,
                 },
                 id: Date.now(),
                 isFixed: false,
@@ -72,6 +100,7 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
         setValue('title', '');
         setValue('desc', '');
         setValue('notes', []);
+        setValue('date', new Date());
         setShow(false)
         
     }
@@ -124,6 +153,28 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
                 />
                 {errors.desc && <span>{errors.desc.message}</span>}
                 </div>
+                <div className='add-task-form__elem'>
+                <Controller
+                    name="date"
+                    control={control}
+                    rules={{required: "Введите дату окончания"}}
+                    render={({field}) => (
+                        <DatePicker 
+                            className="add-task-form__input" 
+                            calendarClassName="add-task-form__calendar"
+                            calendarIcon={<StyledCalendar/>}
+                            clearIcon={<StyledClose/>}
+
+                            value={field.value}
+                            onChange={field.onChange}
+                            minDate={new Date()}
+                />
+                    )}
+                />
+                {errors.date && <span>{errors.date.message}</span>}
+                </div>
+                
+                {/* <DatePicker id='add-task-form__input'/> */}
                 <Controller 
                     
                     name="notes"

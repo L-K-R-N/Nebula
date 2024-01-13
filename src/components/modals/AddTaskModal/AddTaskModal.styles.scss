@@ -14,6 +14,72 @@
         @include input;
         width: 100%;
         
+        & > div {
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        & svg {
+           transition: $transition-main;
+        }
+    }
+
+    &__calendar {
+        background: $dark-gray;
+        border-radius: $main-br;
+        font-family: $font-family-primary;
+        font-size: $size-xxxs;
+        border: none;
+        & .react-calendar__tile {
+            padding: 4px;
+            border-radius: $main-br;
+            font-weight: 700;
+            text-shadow: $bottom-text-shadow;
+            &--now {
+                background: $orange;
+            }
+
+            &--active {
+                background: $light-green;
+            }
+
+            &:hover {
+                color: $black;
+                background: $white;
+            }
+
+            &:disabled {
+                opacity: 0.1;
+                color: $black;
+                background: $white;
+                text-shadow: none;
+            }
+        }
+
+        & .react-calendar__month-view__days__day--weekend {
+            color: $light-red;
+            text-shadow: none;
+
+            &.react-calendar__tile--active {
+                color: $white
+            }
+        }
+
+        .react-calendar__navigation button {
+            &:hover {
+                background: $white;
+                color: $black;
+                border-radius: $main-br
+            }
+
+            &:disabled {
+                opacity: 0.1;
+                color: $black;
+                background: $white;
+                text-shadow: none;
+            }
+        }
     }
 
     &__button {
@@ -25,3 +91,5 @@
         @include flex($direction: column, $justify: stretch, $gap: 10px, $align: stretch);
     }
 }
+
+

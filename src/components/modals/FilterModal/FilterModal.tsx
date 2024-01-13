@@ -10,7 +10,7 @@ import { Modal } from 'components/UI/Modal';
 import Select, { ActionMeta, SingleValue } from 'react-select';
 import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { TSorting } from 'models/Filter.types';
+import { ISortingOption, TSorting } from 'models/Filter.types';
 
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
     setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const options: IOption[] = [
+const options: ISortingOption[] = [
     {
         value: "desc",
         label: "По описанию"
@@ -34,7 +34,7 @@ const options: IOption[] = [
 ]
 
 interface FilterInputs {
-    sorting: TSorting
+    sorting: ISortingOption
 }
 
 export const FilterModal: React.FC<Props> = ({isShow, setShow}) => {
@@ -56,7 +56,7 @@ export const FilterModal: React.FC<Props> = ({isShow, setShow}) => {
 
     const onSubmit: SubmitHandler<FilterInputs> = (data) => {
         dispatch(setSorting(data.sorting))
-        console.log(sortingBy)
+        console.log()
         setShow(false)
     }
 

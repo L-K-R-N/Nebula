@@ -5,10 +5,14 @@ import { Modal } from 'components/UI/Modal';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import Select from 'react-select/creatable';
 import {INote, IProject} from 'models/Project.types';
-import { format } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 import { updateTaskComments, updateTasks } from 'store/actionCreators/Projects';
 import { IDates, ITask, TTaskStatus } from 'models/TodoCard.types';
 import { CommentItem } from 'components/layout/CommentItem/CommentItem';
+import styled from 'styled-components';
+import { useAppSelector } from 'hooks/useAppSelector';
+import {ru} from 'date-fns/locale'
+
 // import CreatableSelect from 'react-select/Creatable';
 interface Props {
     isShow: boolean;
@@ -25,10 +29,17 @@ interface ICommentInputs {
 
 
 
+
 export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, task}) => {
     const dispatch = useAppDispatch()
     const currentDate = new Date();
+    const {me} = useAppSelector(state => state.UserReducer)
     // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
+
+    const formattedDate = formatDistanceToNow(currentDate, {
+        locale: ru,
+        addSuffix: true,
+    })
 
     const {
         handleSubmit,
@@ -45,19 +56,15 @@ export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, ta
             projectId: project.id,
             taskId: task.id,
             comments: [...task.comments, {
-                user: {
-                    id: 1,
-                    username: 'LKRN',
-                    email: 'email'
-                },
+                user: me,
                 comments: [],
                 date: {
-                    creation: format(currentDate, 'dd.MM.yyyy'),
-                    completion: format(currentDate, 'dd.MM.yyyy'),
-                    change: format(currentDate, 'dd.MM.yyyy'),
+                    creation: currentDate,
+                    completion: currentDate,
+                    change: currentDate,
                 },
                 id: Date.now(),
-                likes: 0,
+                likes: [],
                 text: data.text
 
             }]
@@ -81,7 +88,7 @@ export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, ta
             <div className="comment-modal">
                 <div className="comment-modal__content">
                     {task.comments.map((comment) => 
-                        <CommentItem comment={comment}/>
+                        <CommentItem key={comment.id} project={project} task={task} comment={comment}/>
                     )}
                 </div>
                 <form className="comment-modal__form" onSubmit={handleSubmit(onSubmit)}>
@@ -101,7 +108,7 @@ export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, ta
                         />
                     )}
                 />
-                {errors.text && <span>{errors.text.message}</span>}
+                
 
                 
                 <button 

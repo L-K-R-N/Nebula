@@ -19,7 +19,7 @@ export const FilterForm: React.FC<Props> = () => {
     }, [search])
     return (
 
-        <form className="filter-form">
+        <div className="filter-form">
             <div className="filter-form__input-container">
                 <input 
                     title="Поиск нужного проекта" 
@@ -38,7 +38,7 @@ export const FilterForm: React.FC<Props> = () => {
                 onClick={() => setShowFilter(true)}
                 >Фильтры</button>
             <FilterModal isShow={showFilter} setShow={setShowFilter}/>
-        </form>
+        </div>
 
         
     )

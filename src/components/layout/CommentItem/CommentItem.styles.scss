@@ -7,14 +7,20 @@
     @include flex($direction: column, $gap: 10px, $justify: stretch, $align: stretch);
     width: 100%;
     height: auto;
-    background: $dark-gray;
+    // background: $dark-gray;
+        background: lighten($dark-gray, 8%);
+
     border-radius: $main-br;
     border: 5px solid $orange;
     border-top: none;
     border-bottom: none;
-    padding: 12px 10px;
+    padding: 12px 15px;
     color: white;
-    
+    transition: $transition-main;
+
+    &:hover {
+    }
+
     &-header {
         @include flex();
 
@@ -30,6 +36,13 @@
         &__date {
             opacity: 0.6;
             font-weight: 200;
+            font-size: $size-xxxs;
+        }
+
+        &__isChanging {
+            opacity: 0.6;
+            font-weight: 200;
+            font-size: $size-xxxs;
         }
     }
     
@@ -39,6 +52,7 @@
     }
     &-footer {
         @include flex($justify: start, $gap: 15px);
+        
         
     }
 

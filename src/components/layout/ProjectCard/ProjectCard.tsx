@@ -11,7 +11,8 @@ import { MarkBtn } from 'components/UI/MarkBtn';
 import { updateProjectImportant } from 'store/actionCreators/Projects';
 import { ChangeProjectModal } from 'components/modals/ChangeProjectModal/ChangeProjectModal';
 import { Notes } from '../Notes/Notes';
-
+import { formatDistanceToNow } from 'date-fns';
+import {ru} from 'date-fns/locale'
 
 
     
@@ -88,6 +89,7 @@ export const ProjectCard: React.FC<Props> = ({project}) => {
         setIsImportant(isImportant ? false : true)
     }
 
+
     
     return (
         <>
@@ -95,9 +97,14 @@ export const ProjectCard: React.FC<Props> = ({project}) => {
                 <div className="project-card__header">
                     <h4 className="project-card__info">
 
-                        <span className="project-card__title">{project.title} </span>  
+                        <span className="project-card__title">{project.title}</span>  
             
-                        <span className="project-card__date">({project.date})</span>
+                        <span className="project-card__date">{ 
+                            formatDistanceToNow(project.date, {
+                                locale: ru,
+                                addSuffix: true,
+                            })
+                        }</span>
                     </h4>
                     <div className="project-card__control">
 

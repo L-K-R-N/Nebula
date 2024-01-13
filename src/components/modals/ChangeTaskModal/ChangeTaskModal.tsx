@@ -9,6 +9,8 @@ import Select from 'react-select/creatable';
 import { useEffect } from 'react';
 import { ITask } from 'models/TodoCard.types';
 import { SelectStyles, StylizedMultiSelect } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
+import DatePicker from 'react-date-picker';
+import { ITaskInputs, StyledCalendar, StyledClose } from '../AddTaskModal/AddTaskModal';
 interface Props {
     isShow: boolean;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,13 +32,14 @@ export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task
         formState: {
             errors
         }
-    } = useForm<Inputs>()
+    } = useForm<ITaskInputs>()
     
     // const watchTitle = watch("title", project.title)
     useEffect(() => {
         setValue('desc', task.desc);
         setValue('title', task.title);
         setValue('notes', task.notes);
+        setValue('date', task.date.completion);
     }, [task])
 
 
@@ -115,7 +118,26 @@ export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task
                     />
                     {errors.desc && <span>{errors.desc.message}</span>}
                 </div>
+                <div>
+                <Controller
+                    name="date"
+                    control={control}
+                    rules={{required: "Введите дату окончания"}}
+                    render={({field}) => (
+                        <DatePicker
+                            className="add-task-form__input" 
+                            calendarClassName="add-task-form__calendar"
+                            calendarIcon={<StyledCalendar/>}
+                            clearIcon={<StyledClose/>}
 
+                            value={field.value}
+                            onChange={field.onChange}
+                            minDate={new Date()}
+                />
+                    )}
+                />
+                {errors.date && <span>{errors.date.message}</span>}
+                </div>
                 <Controller 
                     name="notes"
                     control={control}

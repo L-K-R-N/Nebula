@@ -11,16 +11,14 @@ interface Props {
 
 export const Projects: React.FC<Props> = ({projects}) => {
     
-    const {search, sortingBy} = useAppSelector(state => state.FilterReducer)
-    const sortedProjects = useSortProjects(projects, sortingBy);
-    const searchedProjects = useSearchProject(sortedProjects, search)
+    
 
     
     return (
         <div className="projects">
             <div className="big-wrapper">
                 {
-                    searchedProjects.length ? <ProjectList projects={searchedProjects}/> : <h4>Проекты не найдены</h4>
+                    projects.length ? <ProjectList projects={projects}/> : <h4>Проекты не найдены</h4>
                 }
                 
             </div>

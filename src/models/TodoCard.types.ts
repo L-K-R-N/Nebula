@@ -20,10 +20,11 @@ export interface ITask {
 }
 
 
+
 export interface IDates {
-    creation: string;
-    completion: string;
-    change: string;
+    creation: Date;
+    completion: Date;
+    change: Date;
 }
 
 
@@ -34,7 +35,7 @@ export interface IComment {
     user: IUser;
     text: string;
     comments: IComment[];
-    likes: number;
+    likes: IUser[];
     date: IDates;
 }
 

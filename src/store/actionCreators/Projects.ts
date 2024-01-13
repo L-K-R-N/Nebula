@@ -1,7 +1,8 @@
 import { createAction } from "@reduxjs/toolkit";
-import { INote, IProject } from "models/Project.types";
+import { ICards, INote, IProject } from "models/Project.types";
 import { IOption } from "models/Select.types";
-import { IComment, ITask } from "models/TodoCard.types";
+import { IComment, ITask, TTaskStatus } from "models/TodoCard.types";
+import { IUser } from "models/User.types";
 
 
 
@@ -31,6 +32,7 @@ export const updateTasks = createAction<ITasksUpdate, "projects/updateTasks">("p
 
 export interface ITasksUpdate {
     projectId: number;
+    cardTitle: TTaskStatus;
     tasks: ITask[];
 }
 
@@ -39,6 +41,7 @@ export const updateTask = createAction<ITaskUpdate, "projects/updateTask">("proj
 
 export interface ITaskUpdate {
     projectId: number;
+    
     taskId: number;
     newTask: ITask;
 }
@@ -63,5 +66,16 @@ export interface ITaskCommentUpdate {
     taskId: number;
     commentId: number;
     newComment: IComment;
+}
+
+
+export const updateTaskCommentLikes = createAction<ITaskCommentLikesUpdate, "projects/updateTaskCommentLikes">("projects/updateTaskCommentLikes")
+
+
+export interface ITaskCommentLikesUpdate {
+    projectId: number;
+    taskId: number;
+    commentId: number;
+    newCommentLikes: IUser[];
 }
 

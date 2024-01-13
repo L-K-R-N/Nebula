@@ -12,17 +12,20 @@ interface Props {
 export const TodoArea: React.FC<Props> = ({project}) => {
     const cards = useMemo(() => {
         const cards: ITodoCard[] = [
-            {id: 1, 
-            tasks: project.tasks.filter((task) => task.status === "queue"),
-            title: 'queue'
+            {
+                id: 1, 
+                tasks: project.tasks.queue,
+                title: 'queue'
             },
-            {id: 2, 
-                tasks: project.tasks.filter((task) => task.status === "development"),
-            title: 'development'
+            {
+                id: 2, 
+                tasks: project.tasks.development,
+                title: 'development'
             },
-            {id: 3, 
-                tasks: project.tasks.filter((task) => task.status === "done"),
-            title: 'done'
+            {
+                id: 3, 
+                tasks: project.tasks.done,
+                title: 'done'
             },]
         return cards
     }, [project.tasks])

@@ -7,7 +7,7 @@
     border-radius: $main-br;
     background-color: $soft-gray;
     height: 100%;
-    width: 100%;
+    width: 33%;
     box-shadow: $shadow;
     
     &__header {
@@ -15,30 +15,55 @@
         background: $light-green;
         padding: 8px 15px;
         border-radius: $main-br;
-        border: 18px solid $dark-gray;
+        border: 12px solid $dark-gray;
         border-left: none;
         border-right: none;
+        height: 10%;
     }
 
     &__add {
         width: 30px;
         height: 30px;
-        filter: $filter-white;
+        color: white;
         cursor: pointer;
-        
+        opacity: .8;
+        transition: $transition-main;
         &:hover {
-            filter: $filter-orange;
+        opacity: 1;
+
         }
     }
     &__title {
         color: $white;
-        font-size: $size-xl;
+        font-size: $size-l;
         text-shadow: $bottom-text-shadow;
+        text-transform: uppercase;
     }
 
     &__main {
-        padding: 20px 15px;
-        @include flex($direction: column, $gap: 20px)
+        padding: 20px 8px 20px 15px;
+        @include flex($direction: column, $gap: 20px, $justify: start);
+        height: 90%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            
+           
+        }
+        &::-webkit-scrollbar-thumb {
+            background: lighten($gray, 10%);
+            border: 2px solid $soft-gray;
+            border-radius: 999px;
+        }
+        &::-webkit-scrollbar {
+            
+        }
+        &::-webkit-scrollbar {
+            
+        }
     }
 }
 

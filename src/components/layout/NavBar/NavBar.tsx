@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import './NavBar.styles.scss';
 import { ILink } from 'models/NavBar.types';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const List = styled.ul`
     
@@ -21,7 +21,15 @@ export const NavBar: React.FC<Props> = ({links}) => {
         <nav className="menu">
             <ul className="menu__list">
                 {links.map((link) => 
-                    <Link to={link.to} className="menu__list-item" key={link.to}>{link.children}</Link>
+                    <NavLink
+                        to={link.to} 
+                        className={({isActive, isPending}) => 
+                            isActive ? "menu__list-item active" 
+                            : isPending ? "menu__list-item pending"
+                            : "menu__list-item" 
+                        } 
+                        key={link.to}
+                    >{link.children}</NavLink>
                 )}
             </ul>
         </nav>
