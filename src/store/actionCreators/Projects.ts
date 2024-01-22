@@ -1,7 +1,8 @@
+import { UniqueIdentifier } from "@dnd-kit/core";
 import { createAction } from "@reduxjs/toolkit";
-import { ICards, INote, IProject } from "models/Project.types";
+import {  INote, IProject } from "models/Project.types";
 import { IOption } from "models/Select.types";
-import { IComment, ITask, TTaskStatus } from "models/TodoCard.types";
+import { IComment, ITask, ITodoCard } from "models/Project.types";
 import { IUser } from "models/User.types";
 
 
@@ -28,12 +29,27 @@ export interface IProjectNotesUpdate {
 }
 
 
+export const updateCards = createAction<ICardsUpdate, "projects/updateCards">("projects/updateCards")
+
+export interface ICardsUpdate {
+    projectId: number;
+    newCards: ITodoCard[];
+}
+
+export const updateCard = createAction<ICardUpdate, "projects/updateCard">("projects/updateCard")
+
+export interface ICardUpdate {
+    projectId: number;
+    cardId: UniqueIdentifier;
+    newCard: ITodoCard;
+}
+
 export const updateTasks = createAction<ITasksUpdate, "projects/updateTasks">("projects/updateTasks")
 
 export interface ITasksUpdate {
     projectId: number;
-    cardTitle: TTaskStatus;
-    tasks: ITask[];
+    cardId: UniqueIdentifier;
+    newTasks: ITask[];
 }
 
 export const updateTask = createAction<ITaskUpdate, "projects/updateTask">("projects/updateTask")
@@ -41,8 +57,8 @@ export const updateTask = createAction<ITaskUpdate, "projects/updateTask">("proj
 
 export interface ITaskUpdate {
     projectId: number;
-    
-    taskId: number;
+    cardId: UniqueIdentifier;
+    taskId: UniqueIdentifier;
     newTask: ITask;
 }
 
@@ -52,8 +68,10 @@ export const updateTaskComments = createAction<ITaskCommentsUpdate, "projects/up
 
 export interface ITaskCommentsUpdate {
     projectId: number;
-    taskId: number;
-    comments: IComment[];
+    cardId: UniqueIdentifier;
+
+    taskId: UniqueIdentifier;
+    newComments: IComment[];
 }
 
 
@@ -63,7 +81,8 @@ export const updateTaskComment = createAction<ITaskCommentUpdate, "projects/upda
 
 export interface ITaskCommentUpdate {
     projectId: number;
-    taskId: number;
+    cardId: UniqueIdentifier;
+    taskId: UniqueIdentifier;
     commentId: number;
     newComment: IComment;
 }
@@ -74,7 +93,8 @@ export const updateTaskCommentLikes = createAction<ITaskCommentLikesUpdate, "pro
 
 export interface ITaskCommentLikesUpdate {
     projectId: number;
-    taskId: number;
+    cardId: UniqueIdentifier;
+    taskId: UniqueIdentifier;
     commentId: number;
     newCommentLikes: IUser[];
 }

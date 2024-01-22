@@ -3,7 +3,7 @@ import './ChangeProjectModal.styles.scss'
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { Modal } from 'components/UI/Modal';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { IProject, Inputs } from 'models/Project.types';
+import { IProject, TProjectInputs} from 'models/Project.types';
 import { updateProject } from 'store/actionCreators/Projects';
 import Select from 'react-select/creatable';
 import { useEffect } from 'react';
@@ -30,7 +30,7 @@ export const ChangeProjectModal: React.FC<Props> = ({isShow, setShow, project}) 
         formState: {
             errors
         }
-    } = useForm<Inputs>()
+    } = useForm<TProjectInputs>()
     
     // const watchTitle = watch("title", project.title)
     useEffect(() => {
@@ -40,7 +40,7 @@ export const ChangeProjectModal: React.FC<Props> = ({isShow, setShow, project}) 
     }, [project])
 
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onSubmit: SubmitHandler<TProjectInputs> = (data) => {
         dispatch(updateProject({
             id: project.id,
             date: project.date,
@@ -48,18 +48,13 @@ export const ChangeProjectModal: React.FC<Props> = ({isShow, setShow, project}) 
             desc: data.desc,
             title: data.title,
             notes: data.notes,
-            tasks: project.tasks
+            cards: project.cards
         }))
         reset()
         setShow(false)
     }
 
-    // useEffect(() => {
-    //     const subscription = watch((value, { name, type }) =>
-    //       console.log(value, name, type)
-    //     )
-    //     return () => subscription.unsubscribe()
-    //   }, [watch])
+    
  
     return (
         <Modal title='Изменение проекта' setShow={setShow} isShow={isShow}>

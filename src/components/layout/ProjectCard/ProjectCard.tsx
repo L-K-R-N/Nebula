@@ -6,7 +6,7 @@ import { IAction } from 'models/MoreList.types';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { useAppDispatch } from 'hooks/useAppDispatch';
-import { setProjects } from 'store/reducers/ProjectsSlice';
+import { setCurrentProject, setProjects } from 'store/reducers/ProjectsSlice';
 import { MarkBtn } from 'components/UI/MarkBtn';
 import { updateProjectImportant } from 'store/actionCreators/Projects';
 import { ChangeProjectModal } from 'components/modals/ChangeProjectModal/ChangeProjectModal';
@@ -52,14 +52,12 @@ export const ProjectCard: React.FC<Props> = ({project}) => {
         // console.log(project.isImportant)
     }, [isImportant])
 
-    useEffect(() => {
-        console.log('Проекты после обновения', projects)
-    }, [projects])
+    
 
     
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
-        
+        dispatch(setCurrentProject(project))
         navigate(`/projects/${project.id}`)
     }
 
@@ -94,6 +92,7 @@ export const ProjectCard: React.FC<Props> = ({project}) => {
     return (
         <>
             <div className="project-card" onClick={(e) => handleClick(e)}>
+                
                 <div className="project-card__header">
                     <h4 className="project-card__info">
 

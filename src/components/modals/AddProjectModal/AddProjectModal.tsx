@@ -6,7 +6,7 @@ import { Modal } from 'components/UI/Modal';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { setProjects } from 'store/reducers/ProjectsSlice';
 import Select from 'react-select/creatable';
-import {Inputs } from 'models/Project.types';
+import {IProject, TProjectInputs } from 'models/Project.types';
 import { format, formatDistanceToNow } from 'date-fns';
 import { StylesConfig } from 'react-select';
 import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
@@ -34,9 +34,9 @@ export const AddProjectModal: React.FC<Props> = ({isShow, setShow}) => {
         formState: {
             errors
         }
-    } = useForm<Inputs>()
+    } = useForm<TProjectInputs>()
     
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onSubmit: SubmitHandler<TProjectInputs> = (data) => {
         dispatch(setProjects([...projects, {
             id: Date.now(),
             date: currentDate,
@@ -44,11 +44,7 @@ export const AddProjectModal: React.FC<Props> = ({isShow, setShow}) => {
             title: data.title,
             notes: data.notes,
             isImportant: false,
-            tasks: {
-                queue: [],
-                development: [],
-                done: [],
-            }
+            cards: []
         }]))
         
         console.log(data.notes)

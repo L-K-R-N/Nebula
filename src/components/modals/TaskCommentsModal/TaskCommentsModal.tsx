@@ -7,7 +7,7 @@ import Select from 'react-select/creatable';
 import {INote, IProject} from 'models/Project.types';
 import { format, formatDistanceToNow } from 'date-fns';
 import { updateTaskComments, updateTasks } from 'store/actionCreators/Projects';
-import { IDates, ITask, TTaskStatus } from 'models/TodoCard.types';
+import { IDates, ITask, ITodoCard} from 'models/Project.types';
 import { CommentItem } from 'components/layout/CommentItem/CommentItem';
 import styled from 'styled-components';
 import { useAppSelector } from 'hooks/useAppSelector';
@@ -19,6 +19,7 @@ interface Props {
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
     project: IProject;
     task: ITask;
+    card: ITodoCard
 }
 
 
@@ -30,7 +31,7 @@ interface ICommentInputs {
 
 
 
-export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, task}) => {
+export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, task, card}) => {
     const dispatch = useAppDispatch()
     const currentDate = new Date();
     const {me} = useAppSelector(state => state.UserReducer)
@@ -55,7 +56,8 @@ export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, ta
         dispatch(updateTaskComments({
             projectId: project.id,
             taskId: task.id,
-            comments: [...task.comments, {
+            cardId: card.id,
+            newComments: [...task.comments, {
                 user: me,
                 comments: [],
                 date: {
@@ -88,7 +90,7 @@ export const TaskCommentsModal: React.FC<Props> = ({isShow, setShow, project, ta
             <div className="comment-modal">
                 <div className="comment-modal__content">
                     {task.comments.map((comment) => 
-                        <CommentItem key={comment.id} project={project} task={task} comment={comment}/>
+                        <CommentItem card={card} key={comment.id} project={project} task={task} comment={comment}/>
                     )}
                 </div>
                 <form className="comment-modal__form" onSubmit={handleSubmit(onSubmit)}>

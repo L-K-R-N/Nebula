@@ -1,7 +1,7 @@
 
 import './CommentItem.styles.scss';
 import { IProject } from 'models/Project.types';
-import { IComment, ITask } from 'models/TodoCard.types';
+import { IComment, ITask, ITodoCard } from 'models/Project.types';
 import { MoreBtn } from 'components/UI/MoreBtn';
 import { IAction } from 'models/MoreList.types';
 import { useEffect, useState } from 'react';
@@ -13,11 +13,6 @@ import { IUser } from 'models/User.types';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { formatDistanceToNow } from 'date-fns';
 import { ru } from 'date-fns/locale';
-interface Props {
-    project: IProject;
-    task: ITask;
-    comment: IComment;
-}
 
 const LikeContainer = styled.span<LikeContainerProps>`
     display: flex;
@@ -51,11 +46,17 @@ const copyToClipboard = (text: string) => {
         .catch((error) => {
             console.log('ошибка при копировании', )
         })
+    }
+    
+    
+interface Props {
+    project: IProject;
+    card: ITodoCard;
+    task: ITask;
+    comment: IComment;
 }
 
-
-
-export const CommentItem: React.FC<Props> = ({project, task, comment}) => {
+export const CommentItem: React.FC<Props> = ({project, card, task, comment}) => {
     const dispatch = useAppDispatch();
     const {me} = useAppSelector(state => state.UserReducer)
     const [isLikeActive, setIsLikeActive] = useState(false);
@@ -103,7 +104,8 @@ export const CommentItem: React.FC<Props> = ({project, task, comment}) => {
         dispatch(updateTaskComments({
             projectId: project.id,
             taskId: task.id,
-            comments: newComments
+            cardId: card.id,
+            newComments: newComments
         }))
         
     }
@@ -124,6 +126,7 @@ export const CommentItem: React.FC<Props> = ({project, task, comment}) => {
             setIsLikeActive(false);
             dispatch(updateTaskCommentLikes({
                 projectId: project.id,
+                cardId: card.id,
                 taskId: task.id,
                 commentId: comment.id,
                 newCommentLikes: newLikes
@@ -133,6 +136,7 @@ export const CommentItem: React.FC<Props> = ({project, task, comment}) => {
             setIsLikeActive(true);
             dispatch(updateTaskCommentLikes({
                 projectId: project.id,
+                cardId: card.id,
                 taskId: task.id,
                 commentId: comment.id,
                 newCommentLikes: [...comment.likes, me]

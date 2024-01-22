@@ -8,8 +8,10 @@
 
 
     &-control {
-        padding: 18px 0;
-        background: $dark-gray;
+        padding: 8px 0;
+        // background: $dark-gray;
+        margin-top: 10px;
+        margin-bottom: 10px;
         
         &__content {
             @include flex();
@@ -17,13 +19,15 @@
         }
     
         &__title {
-            font-size: $size-xxxl;
+            font-size: $size-xl;
             text-align: center;
-            padding: 13px 55px;
             border-radius: $main-br;
-            background: $light-green;
-            color: $white;
+            color: $black;
             text-shadow: $bottom-text-shadow;
+        }
+
+        &__button {
+            @include button-primary
         }
 }
 

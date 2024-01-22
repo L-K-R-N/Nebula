@@ -3,24 +3,27 @@ import './ChangeTaskModal.styles.scss'
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { Modal } from 'components/UI/Modal';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { INote, IProject, Inputs } from 'models/Project.types';
+import { INote, IProject, TProjectInputs} from 'models/Project.types';
 import { updateProject, updateTask } from 'store/actionCreators/Projects';
 import Select from 'react-select/creatable';
 import { useEffect } from 'react';
-import { ITask } from 'models/TodoCard.types';
+import { ITask, ITodoCard } from 'models/Project.types';
 import { SelectStyles, StylizedMultiSelect } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
 import DatePicker from 'react-date-picker';
 import { ITaskInputs, StyledCalendar, StyledClose } from '../AddTaskModal/AddTaskModal';
+
+
 interface Props {
     isShow: boolean;
     setShow: React.Dispatch<React.SetStateAction<boolean>>;
     project: IProject;
     task: ITask;
+    card: ITodoCard;
 }
 
 
 
-export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task}) => {
+export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task, card}) => {
     const dispatch = useAppDispatch()
     // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
 
@@ -43,9 +46,10 @@ export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task
     }, [task])
 
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onSubmit: SubmitHandler<ITaskInputs> = (data) => {
         dispatch(updateTask({
             projectId: project.id,
+            cardId: card.id,
             taskId: task.id,
             newTask: {
                 id: task.id,
@@ -58,7 +62,6 @@ export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task
                 desc: data.desc,
                 title: data.title,
                 notes: data.notes,
-                status: task.status,
                 comments: task.comments,
                 subtasks: task.subtasks
             }
@@ -67,12 +70,7 @@ export const ChangeTaskModal: React.FC<Props> = ({isShow, setShow, project, task
         setShow(false)
     }
 
-    // useEffect(() => {
-    //     const subscription = watch((value, { name, type }) =>
-    //       console.log(value, name, type)
-    //     )
-    //     return () => subscription.unsubscribe()
-    //   }, [watch])
+    
  
     return (
         <Modal title='Изменение задачи' setShow={setShow} isShow={isShow}>

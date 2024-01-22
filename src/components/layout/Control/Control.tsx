@@ -9,7 +9,11 @@ interface Props {
 }
 
 export const Control: React.FC<Props> = () => {
-    const [addModalShow, setModalShow] = useState(false)
+    const [addModalShow, setModalShow] = useState(false);
+
+    const handleSetModalShow = () => {
+        setModalShow(true)
+    }
     return (
         <div className="control">
             <div className="big-wrapper control__content">
@@ -17,7 +21,7 @@ export const Control: React.FC<Props> = () => {
                 <button 
                     title="Добавить проект" 
                     className="control__button create-button"
-                    onClick={() => setModalShow(true)}
+                    onClick={handleSetModalShow}
                 >Добавить проект</button>
                 <AddProjectModal isShow={addModalShow} setShow={setModalShow}/>
             </div>

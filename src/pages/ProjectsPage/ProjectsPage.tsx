@@ -17,9 +17,7 @@ export const ProjectsPage: React.FC<Props> = () => {
     const sortedProjects = useSortProjects(projects, sortingBy.value);
     const searchedProjects = useSearchProject(sortedProjects, search)
 
-    useEffect(() => {
-        console.log("ОБНОВЛЕНИЕ")
-    }, [searchedProjects])
+    
     return (
         <div className="project-page">
                     <Control/>

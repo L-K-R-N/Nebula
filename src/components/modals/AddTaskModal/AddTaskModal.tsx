@@ -7,7 +7,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import Select from 'react-select/creatable';
 import {INote, IProject } from 'models/Project.types';
 import { updateTasks } from 'store/actionCreators/Projects';
-import { IDates, ITodoCard, TTaskStatus } from 'models/TodoCard.types';
+import { IDates, ITodoCard } from 'models/Project.types';
 import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
 import DatePicker from 'react-date-picker';
 import { FaCalendar } from "react-icons/fa";
@@ -25,7 +25,6 @@ interface Props {
 
 
 export interface ITaskInputs {
-    status: TTaskStatus;
     date: Date;
     title: string;
     desc: string;
@@ -76,8 +75,8 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
     const onSubmit: SubmitHandler<ITaskInputs> = (data) => {
         dispatch(updateTasks({
             projectId: project.id,
-            cardTitle: card.title,
-            tasks: [...project.tasks[card.title], {
+            cardId: card.id,
+            newTasks: [...card.tasks, {
                 title: data.title,
                 desc: data.desc,
                 notes: data.notes,
@@ -86,9 +85,8 @@ export const AddTaskModal: React.FC<Props> = ({isShow, setShow, project, card}) 
                     completion: data.date,
                     change: currentDate,
                 },
-                id: Date.now(),
+                id: `task-${Date.now()}`,
                 isFixed: false,
-                status: card.title,
                 comments: [],
                 subtasks: []
                 

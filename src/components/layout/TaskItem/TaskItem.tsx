@@ -1,5 +1,5 @@
 
-import { ITask, ITodoCard, TTaskStatus } from 'models/TodoCard.types';
+import { ITask, ITodoCard } from 'models/Project.types';
 import './TaskItem.styles.scss';
 import { BsStopwatchFill } from "react-icons/bs";
 import { MoreBtn } from 'components/UI/MoreBtn';
@@ -7,7 +7,7 @@ import { Fragment, useState } from 'react';
 import { IAction } from 'models/MoreList.types';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { updateTasks } from 'store/actionCreators/Projects';
-import { ICards, IProject } from 'models/Project.types';
+import {  IProject } from 'models/Project.types';
 import { ChangeTaskModal } from 'components/modals/ChangeTaskModal/ChangeTaskModal';
 import { FaMarker } from 'react-icons/fa6';
 import { FaComment } from 'react-icons/fa';
@@ -16,6 +16,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { ca, ru, ta } from 'date-fns/locale';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { DragOverlay, useDraggable } from '@dnd-kit/core';
 
 interface Props {
     task: ITask;
@@ -38,25 +39,31 @@ export const TaskItem: React.FC<Props> = ({task, project, card}) => {
         },
     
     ])
-    const {attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef} = useSortable({id: task.id})
+    // const {attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef} = useSortable({
+        //     id: task.id,
+    //     data: {
+            
+    //     }
+    // })
 
     function handleDelete(e: React.MouseEvent<HTMLDivElement>) {
         e.stopPropagation();
         
-        const newTasks = project.tasks[card.title].filter((t) => t.id !== task.id)
+        const newTasks = card.tasks.filter((t) => t.id !== task.id)
         dispatch(updateTasks({
             projectId: project.id,
-            cardTitle: card.title,
-            tasks: newTasks
+            cardId: card.id,
+            newTasks: newTasks
         }))
         
     }
 
     function handleChange(e: React.MouseEvent<HTMLDivElement>) {
+        
         setIsChanging(true)
         // console.log("Пост изменен")
     }
-
+    
     function handleCommentsOpen(e: React.MouseEvent<SVGElement, MouseEvent>) {
         e.stopPropagation();
         e.preventDefault();
@@ -64,16 +71,25 @@ export const TaskItem: React.FC<Props> = ({task, project, card}) => {
         setIsCommentsShow(true)
         console.log(isCommentsShow)
     }
+    const {attributes, listeners, setNodeRef, transform, transition, setActivatorNodeRef, isDragging} = useSortable({
+        id: task.id,
+        
+        data: {
+            cardId: card.id,
+            // taskIndex: card.tasks.indexOf(task)
+        }
+    })
+    
     const style = {
-        transition,
         transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? .59 : 1
     }
-
     return (
     <div 
         className='task-item-container'
         
-        
+        {...attributes}
         style={style}
         ref={setNodeRef} 
     >
@@ -82,6 +98,11 @@ export const TaskItem: React.FC<Props> = ({task, project, card}) => {
             className="task-item" 
             
         >
+             <div 
+                className="task-item__handle"
+                {...listeners}
+                ref={setActivatorNodeRef}
+            ></div>
             <div className="task-item__header">
                 <h5 className="task-item__title">{task.title}</h5>
                 <MoreBtn list={projectActions} containerStyle={{
@@ -90,8 +111,9 @@ export const TaskItem: React.FC<Props> = ({task, project, card}) => {
                             }}/>
             </div>
             <div className="task-item__main">
-                <p className="task-item__desc" {...attributes} 
-            {...listeners} ref={setActivatorNodeRef}>
+                <p className="task-item__desc"  
+                //  ref={setActivatorNodeRef}
+                 >
                     {task.desc}
                 </p>
                 <hr />
@@ -112,17 +134,19 @@ export const TaskItem: React.FC<Props> = ({task, project, card}) => {
                 
                 </div>
             </div>
-            <div></div>
+           
         </div>
-        <ChangeTaskModal task={task} project={project} isShow={isChanging} setShow={setIsChanging}/>
+        <ChangeTaskModal card={card} task={task} project={project} isShow={isChanging} setShow={setIsChanging}/>
         <TaskCommentsModal 
             
             isShow={isCommentsShow} 
             setShow={setIsCommentsShow} 
             project={project} 
             task={task} 
+            card={card}
             key={task.id}
         /> 
+        
     </div>
     
         

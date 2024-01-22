@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useState } from 'react';
 import './FilterForm.styles.scss';
 import searchIco from './assets/search.svg'
 import { useAppSelector } from 'hooks/useAppSelector';
@@ -14,9 +14,7 @@ export const FilterForm: React.FC<Props> = () => {
     const {search} = useAppSelector(state => state.FilterReducer)
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        console.log(search)
-    }, [search])
+    
     return (
 
         <div className="filter-form">
