@@ -1,7 +1,6 @@
-import { IOption } from 'models/Select.types';
-import React, { CSSProperties, useState } from 'react';
+import Select, { SingleValue, StylesConfig } from 'react-select';
+import { IOption } from '@/models/Select.types';
 
-import Select, { ActionMeta, SingleValue, StylesConfig } from 'react-select';
 // import {
 //   ColourOption,
 //   colourOptions,
@@ -10,14 +9,11 @@ import Select, { ActionMeta, SingleValue, StylesConfig } from 'react-select';
 //   groupedOptions,
 // } from '../data';
 
-
-
 // const groupStyles = {
 //   display: 'flex',
 //   alignItems: 'center',
 //   justifyContent: 'space-between',
 // };
-
 
 // const groupBadgeStyles: CSSProperties = {
 //   backgroundColor: '#EBECF0',
@@ -39,23 +35,13 @@ import Select, { ActionMeta, SingleValue, StylesConfig } from 'react-select';
 //   </div>
 // );
 
-
 interface Props {
-    options: IOption[];
-    // value: IOption;
-    handleChange: (newValue: SingleValue<IOption>) => void;
-    styles: StylesConfig
+   options: IOption[];
+   // value: IOption;
+   handleChange: (newValue: SingleValue<IOption>) => void;
+   styles: StylesConfig;
 }
 
-export const CustomSelect: React.FC<Props> = ({options, handleChange, styles}) => { 
-    // const [selectedOption, setSelectedOption] = useState(null);
- 
-    // const handleChange = (newValue: SingleValue<IOption>) => {
-    // //   setSelectedOption(selectedOption);
-    //   console.log(`Option selected:`, newValue);
-    // };
-   
-    return (
-        <Select options={options} onChange={handleChange}/>
-    )
-}
+export const CustomSelect: React.FC<Props> = ({ options, handleChange }) => {
+   return <Select options={options} onChange={handleChange} />;
+};

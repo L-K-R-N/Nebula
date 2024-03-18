@@ -1,0 +1,27 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.message {
+   @include flex($justify: center);
+   width: 100%;
+   padding: 4vh 0;
+   color: $dark-gray;
+   font-size: 50px;
+
+   &__title {
+      font-size: inherit;
+   }
+}
+
+@include media-max-m {
+   .message {
+      font-size: 40px;
+   }
+}
+
+@include media-max-s {
+   .message {
+      font-size: 30px;
+   }
+}

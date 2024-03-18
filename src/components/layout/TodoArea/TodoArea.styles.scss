@@ -1,27 +1,29 @@
-@import 'styles/vars';
-@import 'styles/mixins';
-@import 'styles/fonts';
-
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
 
 .todo-area {
-    height: 100%;
-    padding-bottom: 20px;
-    &__content {
-        @include flex();
-        width: auto;
-        height: 100%;
-        gap: 20px;
-    }
+   height: 100%;
+   padding-bottom: 20px;
+   &__content {
+      @include flex($justify: start);
+      height: 100%;
+      gap: 20px;
+      height: 100%;
+      max-width: 1800px;
+      width: 100%;
+      height: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
+   }
 }
 
 @include media-max-m {
-    .todo-area {
-        
-        &__content {
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-        }
-    }
+   .todo-area {
+      &__content {
+         flex-direction: column;
+         gap: 10px;
+         width: 100%;
+      }
+   }
 }
-

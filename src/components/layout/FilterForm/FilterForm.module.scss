@@ -1,0 +1,64 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.form {
+   @include flex();
+   gap: 30px;
+}
+
+.inputIco {
+   position: absolute;
+   top: 20px;
+   right: 30px;
+   width: 24px;
+   height: 24px;
+   filter: $filter-white;
+}
+
+.inputContainer {
+   position: relative;
+   width: 400px;
+}
+
+@include media-max-m {
+   .form {
+      width: 100%;
+
+      &__input {
+      }
+      &__button {
+      }
+   }
+}
+@include media-max-s {
+   .filter-form {
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+
+      &__input {
+         padding: 12px 10px 10px 10px;
+         font-size: $size-xxxxxs;
+         border-width: 2px;
+
+         &-ico {
+            position: absolute;
+            top: 12px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            filter: $filter-white;
+         }
+
+         &-container {
+            width: 100%;
+         }
+      }
+      &__button {
+         width: 100%;
+         padding: 10px 0;
+         font-size: $size-xxxxxs;
+      }
+   }
+}

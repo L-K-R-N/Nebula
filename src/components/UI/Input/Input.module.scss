@@ -1,0 +1,38 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.container {
+   position: relative;
+}
+.input {
+   @include input;
+   width: 100%;
+
+   &:active .label {
+      transform: translateY(-100%);
+   }
+}
+
+.label {
+   opacity: 0;
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+@include media-max-m {
+}
+
+@include media-max-s {
+   .container {
+      width: 100%;
+   }
+
+   .input {
+      padding: 12px 10px 10px 10px;
+      font-size: $size-xxxxxs;
+      border-width: 2px;
+   }
+}

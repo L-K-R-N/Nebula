@@ -1,54 +1,37 @@
-import { Link, Outlet } from 'react-router-dom';
-import './Header.styles.scss';
+import { Link } from 'react-router-dom';
+import cl from './Header.module.scss';
+import { FaUser } from 'react-icons/fa';
+import { BsBookmarkDashFill } from 'react-icons/bs';
+import { ILink } from '@/models/NavBar.types';
 import { NavBar } from '../NavBar/NavBar';
-import { ILink } from 'models/NavBar.types';
-import { FaUser } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
-import { HiUsers } from "react-icons/hi";
-import { FaUserPlus } from "react-icons/fa";
+import logo from './assets/logo.png';
+import { Wrapper } from '../Wrapper/Wrapper';
 
-import { BsBookmarkDashFill } from "react-icons/bs";
-interface Props {
-
-}
-
-
+interface Props {}
 
 const navLinks: ILink[] = [
-    
-    // {
-    //     to: "friends",
-    //     children: <FaUserPlus/>
-    // },
-    {
-        to: "/importants",
-        children: <BsBookmarkDashFill/>
-    },
-    {
-        to: "/profile",
-        children: <FaUser/>
-    },
-]
+   {
+      to: '/importants',
+      children: <BsBookmarkDashFill />,
+   },
+   {
+      to: '/profile',
+      children: <FaUser />,
+   },
+];
 
 export const Header: React.FC<Props> = () => {
-
-    return (
-        <>
-        <header className='header'>
-
-            <div className="big-wrapper">
-            <div className="header__content">
-                
-                    <Link to={'/Project-Hub'} className="header__logo logo">
-                        TODO LIST
-                    </Link>
-                    <NavBar links={navLinks}/>
-                
+   return (
+      <header className={cl.header}>
+         <Wrapper>
+            <div className={cl.header__content}>
+               <Link to="/nebula" className={cl.logoContainer}>
+                  <img src={logo} alt="Nebula" className={cl.logoImg} />
+                  <span className={cl.logoText}>Nebula</span>
+               </Link>
+               <NavBar links={navLinks} />
             </div>
-            </div>
-        </header>
-        <Outlet />
-    </>
-    )
-}
-
+         </Wrapper>
+      </header>
+   );
+};

@@ -1,0 +1,16 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.list {
+   @include flex($justify: start, $gap: 30px, $direction: column);
+   height: auto;
+
+   @include media-max-m {
+      gap: 15px;
+   }
+
+   @include media-max-s {
+      gap: 10px;
+   }
+}

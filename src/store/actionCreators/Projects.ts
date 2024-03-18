@@ -1,101 +1,113 @@
-import { UniqueIdentifier } from "@dnd-kit/core";
-import { createAction } from "@reduxjs/toolkit";
-import {  INote, IProject } from "models/Project.types";
-import { IOption } from "models/Select.types";
-import { IComment, ITask, ITodoCard } from "models/Project.types";
-import { IUser } from "models/User.types";
+import { UniqueIdentifier } from '@dnd-kit/core';
+import { createAction } from '@reduxjs/toolkit';
+import {
+   INote,
+   IProject,
+   IComment,
+   ITask,
+   ITodoCard,
+} from '@/models/Project.types';
+import { IUser } from '@/models/User.types';
 
+export const updateProject = createAction<IProject, 'projects/updateProject'>(
+   'projects/updateProject',
+);
 
-
-export const updateProject = createAction<IProject, "projects/updateProject">("projects/updateProject")
-
-
-
-
-export const updateProjectImportant = createAction<IProjectImportantUpdate, "projects/updateProjectImportant">("projects/updateProjectImportant")
+export const updateProjectImportant = createAction<
+   IProjectImportantUpdate,
+   'projects/updateProjectImportant'
+>('projects/updateProjectImportant');
 
 export interface IProjectImportantUpdate {
-    projectId: number;
-    isImportant: boolean;
+   projectId: number;
+   isImportant: boolean;
 }
 
-
-
-export const updateProjectNotes = createAction<IProjectNotesUpdate, "projects/updateProjectNotes">("projects/updateProjectNotes")
+export const updateProjectNotes = createAction<
+   IProjectNotesUpdate,
+   'projects/updateProjectNotes'
+>('projects/updateProjectNotes');
 
 export interface IProjectNotesUpdate {
-    projectId: number;
-    notes: INote[];
+   projectId: number;
+   notes: INote[];
 }
 
-
-export const updateCards = createAction<ICardsUpdate, "projects/updateCards">("projects/updateCards")
+export const updateCards = createAction<ICardsUpdate, 'projects/updateCards'>(
+   'projects/updateCards',
+);
 
 export interface ICardsUpdate {
-    projectId: number;
-    newCards: ITodoCard[];
+   projectId: number;
+   newCards: ITodoCard[];
 }
 
-export const updateCard = createAction<ICardUpdate, "projects/updateCard">("projects/updateCard")
+export const updateCard = createAction<ICardUpdate, 'projects/updateCard'>(
+   'projects/updateCard',
+);
 
 export interface ICardUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
-    newCard: ITodoCard;
+   projectId: number;
+   cardId: UniqueIdentifier;
+   newCard: ITodoCard;
 }
 
-export const updateTasks = createAction<ITasksUpdate, "projects/updateTasks">("projects/updateTasks")
+export const updateTasks = createAction<ITasksUpdate, 'projects/updateTasks'>(
+   'projects/updateTasks',
+);
 
 export interface ITasksUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
-    newTasks: ITask[];
+   projectId: number;
+   cardId: UniqueIdentifier;
+   newTasks: ITask[];
 }
 
-export const updateTask = createAction<ITaskUpdate, "projects/updateTask">("projects/updateTask")
-
+export const updateTask = createAction<ITaskUpdate, 'projects/updateTask'>(
+   'projects/updateTask',
+);
 
 export interface ITaskUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
-    taskId: UniqueIdentifier;
-    newTask: ITask;
+   projectId: number;
+   cardId: UniqueIdentifier;
+   taskId: UniqueIdentifier;
+   newTask: ITask;
 }
 
-
-export const updateTaskComments = createAction<ITaskCommentsUpdate, "projects/updateTaskComments">("projects/updateTaskComments")
-
+export const updateTaskComments = createAction<
+   ITaskCommentsUpdate,
+   'projects/updateTaskComments'
+>('projects/updateTaskComments');
 
 export interface ITaskCommentsUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
+   projectId: number;
+   cardId: UniqueIdentifier;
 
-    taskId: UniqueIdentifier;
-    newComments: IComment[];
+   taskId: UniqueIdentifier;
+   newComments: IComment[];
 }
 
-
-
-export const updateTaskComment = createAction<ITaskCommentUpdate, "projects/updateTaskComment">("projects/updateTaskComment")
-
+export const updateTaskComment = createAction<
+   ITaskCommentUpdate,
+   'projects/updateTaskComment'
+>('projects/updateTaskComment');
 
 export interface ITaskCommentUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
-    taskId: UniqueIdentifier;
-    commentId: number;
-    newComment: IComment;
+   projectId: number;
+   cardId: UniqueIdentifier;
+   taskId: UniqueIdentifier;
+   commentId: number;
+   newComment: IComment;
 }
 
-
-export const updateTaskCommentLikes = createAction<ITaskCommentLikesUpdate, "projects/updateTaskCommentLikes">("projects/updateTaskCommentLikes")
-
+export const updateTaskCommentLikes = createAction<
+   ITaskCommentLikesUpdate,
+   'projects/updateTaskCommentLikes'
+>('projects/updateTaskCommentLikes');
 
 export interface ITaskCommentLikesUpdate {
-    projectId: number;
-    cardId: UniqueIdentifier;
-    taskId: UniqueIdentifier;
-    commentId: number;
-    newCommentLikes: IUser[];
+   projectId: number;
+   cardId: UniqueIdentifier;
+   taskId: UniqueIdentifier;
+   commentId: number;
+   newCommentLikes: IUser[];
 }
-

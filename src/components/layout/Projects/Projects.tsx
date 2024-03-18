@@ -1,28 +1,23 @@
-
-import './Projects.styles.scss';
+import cl from './Projects.module.scss';
+import { IProject } from '@/models/Project.types';
 import { ProjectList } from '../ProjectList/ProjectList';
-import { useSearchProject, useSortProjects } from 'hooks/useFilter';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { IProject } from 'models/Project.types';
+import { Message } from '@/components/UI/Message/Message';
+import { Wrapper } from '../Wrapper/Wrapper';
 
 interface Props {
-    projects: IProject[];
+   projects: IProject[];
 }
 
-export const Projects: React.FC<Props> = ({projects}) => {
-    
-    
-
-    
-    return (
-        <div className="projects">
-            <div className="big-wrapper">
-                {
-                    projects.length ? <ProjectList projects={projects}/> : <h4>Проекты не найдены</h4>
-                }
-                
-            </div>
-        </div>
-        
-    )
-}
+export const Projects: React.FC<Props> = ({ projects }) => {
+   return (
+      <div className={cl.projects}>
+         <Wrapper>
+            {projects.length ? (
+               <ProjectList projects={projects} />
+            ) : (
+               <Message>Проекты не найдены :(</Message>
+            )}
+         </Wrapper>
+      </div>
+   );
+};

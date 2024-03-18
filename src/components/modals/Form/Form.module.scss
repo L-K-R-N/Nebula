@@ -1,0 +1,16 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.form {
+   @include flex(
+      $direction: column,
+      $justify: stretch,
+      $gap: 40px,
+      $align: stretch
+   );
+   padding: 30px 20px;
+   width: 800px;
+   max-width: 100%;
+   max-height: 100%;
+}

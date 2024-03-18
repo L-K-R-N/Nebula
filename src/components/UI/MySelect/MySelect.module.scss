@@ -1,0 +1,19 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.controller {
+   &__elem {
+      @include flex(
+         $direction: column,
+         $justify: stretch,
+         $gap: 10px,
+         $align: stretch
+      );
+   }
+
+   &__input {
+      @include input;
+      width: 100%;
+   }
+}

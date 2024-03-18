@@ -1,0 +1,155 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.projectCard {
+   width: 100%;
+   height: auto;
+   border-radius: $main-br;
+   background: $dark-gray;
+   cursor: pointer;
+
+   transition: $transition-main;
+   &:hover {
+   }
+   &__header,
+   &__main {
+      padding: 22px 30px;
+   }
+
+   &__header {
+      @include flex();
+      background-color: $white;
+      border-radius: $main-br;
+      border-bottom-left-radius: 0;
+   }
+
+   &__info {
+      // @include flex($align: end);
+      // gap: 10px;
+      color: $black;
+      font-size: $size-l;
+      font-weight: 700;
+   }
+
+   &__title {
+      margin-right: 10px;
+   }
+
+   &__date {
+      color: $gray;
+      font-size: $size-xxs;
+      letter-spacing: 1px;
+      font-weight: 400;
+   }
+
+   &__control {
+      @include flex($gap: 30px);
+   }
+
+   &__main {
+      @include flex($gap: 140px);
+      background: $dark-gray;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      border-left: 3px solid $white;
+   }
+
+   &__important,
+   &__change {
+      height: 34px;
+      transition: $transition-main;
+   }
+
+   &__desc {
+      font-size: $size-s;
+      font-weight: 300;
+      color: $white;
+      width: 70%;
+
+      &-ico {
+         display: none;
+         width: 20px;
+         height: 20px;
+         filter: $filter-white;
+
+         &:hover {
+            filter: $filter-light-red;
+         }
+      }
+   }
+}
+
+@include media-max-m {
+   .project-card {
+      &__header {
+      }
+
+      &__control {
+         gap: 5px;
+         // align-items: end;
+      }
+
+      &__notes {
+         display: none;
+
+         &-ico {
+            display: block;
+            width: 14px;
+            height: 14px;
+         }
+      }
+   }
+}
+
+@include media-max-s {
+   .project-card {
+      &__header,
+      &__main {
+         padding: 6px 10px;
+      }
+      &__desc {
+         display: none;
+
+         &-ico {
+            display: block;
+            width: 16px;
+            height: 16px;
+         }
+      }
+
+      &__id {
+         font-size: $size-xxxxs;
+      }
+
+      &__title {
+         font-size: $size-xxxxs;
+      }
+
+      &__info {
+         font-size: $size-xs;
+      }
+
+      &__main {
+         gap: 0;
+      }
+      &__important {
+         height: 18px;
+         width: 18px;
+      }
+
+      &__change {
+         width: 18px;
+         height: 18px;
+      }
+
+      &__control {
+         font-size: $size-xxs;
+      }
+
+      &__date {
+         display: none;
+      }
+   }
+}

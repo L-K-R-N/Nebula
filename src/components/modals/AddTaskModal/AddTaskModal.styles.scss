@@ -1,95 +1,101 @@
-@import 'styles/vars';
-@import 'styles/mixins';
-@import 'styles/fonts';
-
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
 
 .add-task-form {
-    @include flex($direction: column, $justify: stretch, $gap: 40px, $align: stretch);
-    padding: 30px 20px;
-    width: 800px;
-    max-width: 100%;
-    max-height: 100%;
+   @include flex(
+      $direction: column,
+      $justify: stretch,
+      $gap: 40px,
+      $align: stretch
+   );
+   padding: 30px 20px;
+   width: 800px;
+   max-width: 100%;
+   max-height: 100%;
 
-    &__input {
-        @include input;
-        width: 100%;
-        
-        & > div {
-            border: none;
-            color: white;
-            font-size: 20px;
-        }
+   &__input {
+      @include input;
+      width: 100%;
 
-        & svg {
-           transition: $transition-main;
-        }
-    }
+      & > div {
+         border: none;
+         color: white;
+         font-size: 20px;
+      }
 
-    &__calendar {
-        background: $dark-gray;
-        border-radius: $main-br;
-        font-family: $font-family-primary;
-        font-size: $size-xxxs;
-        border: none;
-        & .react-calendar__tile {
-            padding: 4px;
-            border-radius: $main-br;
-            font-weight: 700;
-            text-shadow: $bottom-text-shadow;
-            &--now {
-                background: $orange;
-            }
+      & svg {
+         transition: $transition-main;
+      }
+   }
 
-            &--active {
-                background: $light-green;
-            }
+   &__calendar {
+      background: $dark-gray;
+      border-radius: $main-br;
+      font-family: $font-family-primary;
+      font-size: $size-xxxs;
+      border: none;
+      & .react-calendar__tile {
+         padding: 4px;
+         border-radius: $main-br;
+         font-weight: 700;
+         text-shadow: $bottom-text-shadow;
+         &--now {
+            background: $orange;
+         }
 
-            &:hover {
-                color: $black;
-                background: $white;
-            }
+         &--active {
+            background: $light-green;
+         }
 
-            &:disabled {
-                opacity: 0.1;
-                color: $black;
-                background: $white;
-                text-shadow: none;
-            }
-        }
+         &:hover {
+            color: $black;
+            background: $white;
+         }
 
-        & .react-calendar__month-view__days__day--weekend {
-            color: $light-red;
+         &:disabled {
+            opacity: 0.1;
+            color: $black;
+            background: $white;
             text-shadow: none;
+         }
+      }
 
-            &.react-calendar__tile--active {
-                color: $white
-            }
-        }
+      & .react-calendar__month-view__days__day--weekend {
+         color: $light-red;
+         text-shadow: none;
 
-        .react-calendar__navigation button {
-            &:hover {
-                background: $white;
-                color: $black;
-                border-radius: $main-br
-            }
+         &.react-calendar__tile--active {
+            color: $white;
+         }
+      }
 
-            &:disabled {
-                opacity: 0.1;
-                color: $black;
-                background: $white;
-                text-shadow: none;
-            }
-        }
-    }
+      .react-calendar__navigation button {
+         &:hover {
+            background: $white;
+            color: $black;
+            border-radius: $main-br;
+         }
 
-    &__button {
-        @include button-primary();
-        
-    }
+         &:disabled {
+            opacity: 0.1;
+            color: $black;
+            background: $white;
+            text-shadow: none;
+         }
+      }
+   }
 
-    &__elem {
-        @include flex($direction: column, $justify: stretch, $gap: 10px, $align: stretch);
-    }
+   &__button {
+      @include button-primary();
+   }
+
+   &__elem {
+      @include flex(
+         $direction: column,
+         $justify: stretch,
+         $gap: 10px,
+         $align: stretch
+      );
+   }
 }
-
-

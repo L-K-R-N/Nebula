@@ -1,0 +1,39 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.control {
+   margin-top: 40px;
+   margin-bottom: 40px;
+}
+
+.content {
+   @include flex();
+}
+
+@include media-max-m {
+   .content {
+      flex-direction: column;
+      gap: 30px;
+      align-items: start;
+   }
+
+   .button {
+      width: 100%;
+   }
+}
+
+@include media-max-s {
+   .control {
+      margin-bottom: 15px;
+   }
+
+   .content {
+      gap: 10px;
+   }
+   .button {
+      width: 100%;
+      padding: 10px 0;
+      font-size: $size-xxxxxs;
+   }
+}

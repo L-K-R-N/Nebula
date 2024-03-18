@@ -1,98 +1,73 @@
-import { CloseBtn } from 'components/UI/CloseBtn';
-import './FilterModal.styles.scss'
-import { CustomSelect } from 'components/UI/CustomSelect';
-import { useState } from 'react';
-import { IOption } from 'models/Select.types';
-import { useAppDispatch } from 'hooks/useAppDispatch';
-import { setSorting } from 'store/reducers/FilterSlice';
-import { useAppSelector } from 'hooks/useAppSelector';
-import { Modal } from 'components/UI/Modal';
-import Select, { ActionMeta, SingleValue } from 'react-select';
-import { SelectStyles } from 'components/UI/StylizedMultiSelect/StylizedMultiSelect';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { ISortingOption, TSorting } from 'models/Filter.types';
-
+import './FilterModal.styles.scss';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Modal } from '@/components/UI/Modal';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { setSorting } from '@/store/reducers/FilterSlice';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { ISortingOption } from '@/models/Filter.types';
+import { Form } from '../Form/Form';
+import { Button } from '@/components/UI/Button/Button';
+import { SelectController } from '@/components/UI/SelectController/SelectController';
 
 interface Props {
-    isShow: boolean;
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
+   isShow: boolean;
+   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const options: ISortingOption[] = [
-    {
-        value: "desc",
-        label: "По описанию"
-    },
-    {
-        value: "title",
-        label: "По названию"
-    },
-    { 
-        value: "date",
-        label: "По дате создания"
-    }
-]
+   {
+      value: 'desc',
+      label: 'По описанию',
+   },
+   {
+      value: 'title',
+      label: 'По названию',
+   },
+   {
+      value: 'date',
+      label: 'По дате создания',
+   },
+];
 
 interface FilterInputs {
-    sorting: ISortingOption
+   sorting: ISortingOption;
 }
 
-export const FilterModal: React.FC<Props> = ({isShow, setShow}) => {
-    const dispatch = useAppDispatch()
-    const {sortingBy} = useAppSelector(state => state.FilterReducer) 
-    // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
+export const FilterModal: React.FC<Props> = ({ isShow, setShow }) => {
+   const dispatch = useAppDispatch();
+   const { sortingBy } = useAppSelector((state) => state.FilterReducer);
 
-    const {
-        control,
-        handleSubmit,
-        formState: {
-            errors
-        }
-    } = useForm<FilterInputs>()
-    
-    // const watchTitle = watch("title", project.title)
-    
-    
+   const {
+      control,
+      handleSubmit,
+      formState: { errors },
+   } = useForm<FilterInputs>();
 
-    const onSubmit: SubmitHandler<FilterInputs> = (data) => {
-        dispatch(setSorting(data.sorting))
-        console.log()
-        setShow(false)
-    }
+   const onSubmit: SubmitHandler<FilterInputs> = (data) => {
+      dispatch(setSorting(data.sorting));
+      console.log(data);
+      setShow(false);
+   };
 
- 
-    return (
-        <Modal title='Фильтры' setShow={setShow} isShow={isShow}>
-              <form className="filter-modal" onSubmit={handleSubmit(onSubmit)}>
+   return (
+      <Modal title="Фильтры" setShow={setShow} isShow={isShow}>
+         <Form onSubmit={handleSubmit(onSubmit)}>
+            <SelectController
+               errors={errors}
+               control={control}
+               fieldErrorName={{ type: 'min' }}
+               name="sorting"
+               isMulti={false}
+               options={options}
+               placeholder="Сортировать по"
+               defaultValue={sortingBy}
+               rules={{ required: 'Это обязательное поле' }}
+            />
 
-
-                <Controller
-                        
-                        name="sorting"
-                        control={control}
-                        defaultValue={sortingBy}
-                        render={({field}) => (
-                            <Select
-                                
-                                placeholder="Сортировать по"
-                                styles={SelectStyles}
-                                {...field}
-                                value={field.value}
-                                
-                                options={options}
-                                onChange={(newValue) => {
-                                    field.onChange(newValue)
-                                }}
-                            />
-                        )}
-                    />
-                    <button 
-                        type='submit' 
-                        title="Сохранить изменения"
-                        className='filter-modal__button'
-                    >Сохранить изменения</button>
-                </form>
-            
-        </Modal>
-    )
-}
+            <Button title="Сохранить изменения" type="submit">
+               Сохранить изменения
+            </Button>
+         </Form>
+      </Modal>
+   );
+};

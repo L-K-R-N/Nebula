@@ -1,0 +1,15 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.projects {
+   margin-bottom: 60px;
+
+   @include media-max-m {
+      margin-bottom: 40px;
+   }
+
+   @include media-max-s {
+      margin-bottom: 30px;
+   }
+}

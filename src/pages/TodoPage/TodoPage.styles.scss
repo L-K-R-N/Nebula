@@ -1,153 +1,156 @@
-@import 'styles/vars';
-@import 'styles/mixins';
-@import 'styles/fonts';
-
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
 .todo-page {
-    height: 85%;
-    @include flex($align: stretch, $justify: stretch, $direction: column);
+   height: 90vh;
+   width: 100vw;
+   min-width: 100vw;
+   max-width: 100vw;
+   min-height: 90vh;
+   max-width: 100vw;
+   padding: 30px;
 
+   @include flex($align: stretch, $justify: stretch, $direction: column);
 
-    &-control {
-        padding: 8px 0;
-        // background: $dark-gray;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        
-        &__content {
-            @include flex();
-            gap: 30px;
-        }
-    
-        &__title {
-            font-size: $size-xl;
-            text-align: center;
-            border-radius: $main-br;
+   .container {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      overflow: scroll;
+      border-radius: 10px;
+      padding: 10px;
+
+      &::-webkit-scrollbar {
+         width: 10px;
+         height: 10px;
+
+         &-thumb {
+            background-color: rgba(0, 0, 0, 0.459);
+            border-radius: 999px;
+         }
+
+         &-corner {
+            background: transparent;
+         }
+      }
+   }
+   &-control {
+      padding: 8px 0;
+      // background: $dark-gray;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      &__content {
+         @include flex();
+         gap: 30px;
+      }
+
+      &__title {
+         font-size: $size-xl;
+         text-align: center;
+         border-radius: $main-br;
+         color: $black;
+         text-shadow: $bottom-text-shadow;
+      }
+
+      &__button {
+         @include button-primary;
+      }
+   }
+
+   .filter-form {
+      &__input {
+         background-color: $white;
+         color: $black;
+         border-color: $light-gray;
+         font-weight: 700;
+
+         &-container {
+            width: 330px;
+         }
+
+         &-ico {
+            filter: $filter-black;
+         }
+         &::placeholder {
             color: $black;
-            text-shadow: $bottom-text-shadow;
-        }
-
-        &__button {
-            @include button-primary
-        }
-}
-
-    .filter-form {
-
-        &__input {
-            background-color: $white;
-            color: $black;
-            border-color: $light-gray;
+            text-shadow: none;
             font-weight: 700;
-            
-            &-container {
-                width: 330px;
-            }
+         }
 
-            &-ico {
-                filter: $filter-black;
-            }
-            &::placeholder {
-                color: $black;
-                text-shadow: none;
-                font-weight: 700;
-            }
+         &:hover {
+            border-color: $orange;
+         }
 
-            &:hover {
-                border-color: $orange;
-            }
+         &:focus {
+            border-color: $light-green;
+         }
 
-            &:focus {
-                border-color: $light-green;
-            }
-
-            &:active {
-                border-color: $light-red;
-            }
-        }
-
-        &__button {
-            // border-color: $light-gray;
-            // background: $white;
-
-            // &:hover {
-            //     border-color: $orange;
-            // }
-
-            // &:focus {
-            //     border-color: $light-green;
-            // }
-
-            // &:active {
-            //     border-color: $light-red;
-            // }
-        }
-    }
+         &:active {
+            border-color: $light-red;
+         }
+      }
+   }
 }
 
 @include media-max-m {
-    .todo-page-control {
-        
-        &__content {
-            flex-direction: column;
-            gap: 25px;
-        }
+   .todo-page-control {
+      &__content {
+         flex-direction: column;
+         gap: 25px;
+      }
 
-        &__title {
-            width: 100%;
-            font-size: $size-xxl;
-            text-align: center;
-            padding: 15px 10px;
-        }
+      &__title {
+         width: 100%;
+         font-size: $size-xxl;
+         text-align: center;
+         padding: 15px 10px;
+      }
 
-        .filter-form {
-
-            &__input-container, &__button {
-                width: 50%;
-            }
-        }
-
-        
-
-    }
+      .filter-form {
+         &__input-container,
+         &__button {
+            width: 50%;
+         }
+      }
+   }
 }
 @include media-max-s {
-    .todo-page-control {
-        margin-bottom: 15px;
-        padding: 10px 0;
-        &__content {
-            flex-direction: column;
-            gap: 25px;
-           
-        }
+   .todo-page-control {
+      margin-bottom: 15px;
+      padding: 10px 0;
+      &__content {
+         flex-direction: column;
+         gap: 25px;
+      }
 
-        &__title {
+      &__title {
+         width: 100%;
+         font-size: $size-xxs;
+         text-align: center;
+         padding: 8px;
+      }
+
+      .filter-form {
+         width: 100%;
+         &__input-container,
+         &__button {
             width: 100%;
+         }
+
+         &__input {
+            padding: 18px 14px 15px 14px;
+
+            &-ico {
+               top: 18px;
+            }
+         }
+
+         &__button {
+            padding: 18px 14px 18px 14px;
             font-size: $size-xxs;
-            text-align: center;
-            padding: 8px;
-        }
-
-        .filter-form {
-            width: 100%;
-            &__input-container, &__button {
-                width: 100%;
-            }
-
-            &__input {
-                padding: 18px 14px 15px 14px;
-
-                &-ico {
-                    top: 18px;
-                }
-            }
-
-            &__button {
-                padding: 18px 14px 18px 14px;
-                font-size: $size-xxs;
-            }
-        }
-
-
-
-    }
+         }
+      }
+   }
 }

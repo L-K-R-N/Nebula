@@ -1,60 +1,60 @@
-@import 'styles/vars';
-@import 'styles/mixins';
-@import 'styles/fonts';
-
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
 
 .comment {
-    @include flex($direction: column, $gap: 10px, $justify: stretch, $align: stretch);
-    width: 100%;
-    height: auto;
-    // background: $dark-gray;
-        background: lighten($dark-gray, 8%);
+   @include flex(
+      $direction: column,
+      $gap: 10px,
+      $justify: stretch,
+      $align: stretch
+   );
+   width: 100%;
+   height: auto;
+   // background: $dark-gray;
+   background: lighten($dark-gray, 8%);
 
-    border-radius: $main-br;
-    border: 5px solid $orange;
-    border-top: none;
-    border-bottom: none;
-    padding: 12px 15px;
-    color: white;
-    transition: $transition-main;
+   border-radius: $main-br;
+   border: 5px solid $orange;
+   border-top: none;
+   border-bottom: none;
+   padding: 12px 15px;
+   color: white;
+   transition: $transition-main;
 
-    &:hover {
-    }
+   &:hover {
+   }
 
-    &-header {
-        @include flex();
+   &-header {
+      @include flex();
 
-        &__content {
-            @include flex();
-            gap: 8px;
-        }
+      &__content {
+         @include flex();
+         gap: 8px;
+      }
 
-        &__title {
-            letter-spacing: 2px;
-        }
+      &__title {
+         letter-spacing: 2px;
+      }
 
-        &__date {
-            opacity: 0.6;
-            font-weight: 200;
-            font-size: $size-xxxs;
-        }
+      &__date {
+         opacity: 0.6;
+         font-weight: 200;
+         font-size: $size-xxxs;
+      }
 
-        &__isChanging {
-            opacity: 0.6;
-            font-weight: 200;
-            font-size: $size-xxxs;
-        }
-    }
-    
-    &-main {
-        @include flex($justify: start);
-        margin-bottom: 8px;
-    }
-    &-footer {
-        @include flex($justify: start, $gap: 15px);
-        
-        
-    }
+      &__isChanging {
+         opacity: 0.6;
+         font-weight: 200;
+         font-size: $size-xxxs;
+      }
+   }
 
-    
+   &-main {
+      @include flex($justify: start);
+      margin-bottom: 8px;
+   }
+   &-footer {
+      @include flex($justify: start, $gap: 15px);
+   }
 }

@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { ReactNode } from 'react';
 
 export interface ILink {
-    to: string;
-    children: string | ReactElement;
+   to: string;
+   children: string | ReactNode;
 }

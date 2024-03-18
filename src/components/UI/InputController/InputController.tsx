@@ -1,39 +1,45 @@
-import { Control, Controller, FieldError, FieldErrors, FieldValues, Path, UseControllerProps } from "react-hook-form"
-import './InputController.styles.scss'
-interface Props<
-    TFieldValues extends FieldValues = FieldValues,
-    TName extends Path<TFieldValues> = Path<TFieldValues>,
-    
-    > extends UseControllerProps<TFieldValues, TName> {
-        disabled?: boolean;
-        label: string;
-        placeholder?: string;
-        errors: FieldErrors<TFieldValues>,
-        fieldErrorName: FieldError,
-        control: Control<TFieldValues, any>
+import {
+   Control,
+   Controller,
+   FieldErrors,
+   FieldValues,
+   UseControllerProps,
+} from 'react-hook-form';
+import cl from './InputController.module.scss';
+import { Input } from '../Input/Input';
+import { ReactNode } from 'react';
+
+interface Props<TFieldValues extends FieldValues>
+   extends UseControllerProps<TFieldValues> {
+   disabled?: boolean;
+   label: string;
+   placeholder?: string;
+   errors: FieldErrors<TFieldValues>;
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   control: Control<TFieldValues, any, TFieldValues>;
+   title: string;
 }
 
-export const InputController: React.FC<Props> = ({control, rules, errors, name, fieldErrorName}) => {
-
-
-    return (
-        <div className='controller__elem'>
-                {/* <Controller
-                    
-                    name={name}
-                    control={control}
-                    rules={rules}
-                    render={({field}) => (
-                        <input 
-                            className="controller__input"
-                            placeholder='Введите название'
-                            title='Введите название'
-                            value={field.value} 
-                            onChange={field.onChange}
-                        />
-                    )}
-                />
-                {errors.title && <span>{errors.root?.message}</span>} */}
-                </div>
-    )
+export function InputController<TFieldValues extends FieldValues>({
+   name,
+   control,
+   defaultValue,
+   errors,
+   rules,
+   title,
+}: Props<TFieldValues>) {
+   return (
+      <div className={cl.container}>
+         <Controller
+            name={name}
+            control={control}
+            rules={rules}
+            defaultValue={defaultValue}
+            render={({ field }) => (
+               <Input errors={errors} title={title} field={field} name={name} />
+            )}
+         />
+         {errors && <span>{errors[name]?.message as ReactNode}</span>}
+      </div>
+   );
 }

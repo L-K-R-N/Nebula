@@ -1,0 +1,13 @@
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
+
+.button {
+   @include button-primary();
+}
+
+@include media-max-m {
+}
+
+@include media-max-s {
+}

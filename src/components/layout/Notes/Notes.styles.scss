@@ -1,44 +1,37 @@
-@import 'styles/vars';
-@import 'styles/mixins';
-@import 'styles/fonts';
-
-
+@import '@/styles/vars';
+@import '@/styles/mixins';
+@import '@/styles/fonts';
 .notes {
-    @include flex($justify: end, $gap: 15px);
-    width: 30%;
+   @include flex($justify: end, $gap: 15px);
+   width: 30%;
 
-    &-ico {
-        display: none;
-        width: 20px;
-        height: 20px;
-        filter: $filter-white;
+   &-ico {
+      display: none;
+      width: 20px;
+      height: 20px;
+      filter: $filter-white;
 
-        &:hover {
-            filter: $filter-light-red;
-        }
-    }
-
+      &:hover {
+         filter: $filter-light-red;
+      }
+   }
 }
 
 .note {
-    padding:  6px 28px;
-    border-radius: $round-br;
-    color: $white;
-    background: $light-green;
-    
+   padding: 6px 28px;
+   border-radius: $round-br;
+   color: $white;
+   background: $light-green;
 }
-
 
 @include media-max-m {
-    .notes {
-            display: none;
+   .notes {
+      display: none;
 
-            &-ico {
-                display: block;
-                width: 14px;
-                height: 14px;
-            }
-        }
-    
+      &-ico {
+         display: block;
+         width: 14px;
+         height: 14px;
+      }
+   }
 }
-
