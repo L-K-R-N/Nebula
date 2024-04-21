@@ -5,38 +5,17 @@
 </p>
 
 
-# PROJECT HUB
-Мини аналог Trello
-
+# Nebula
+Доска задач
 <br>
 
-
-
 ## СТЕК ПРОЕКТА
-
-Язык программирования:
 * TypeScript
-
-Библиотеки:
 * React 
-
-Менеджеры состояния:
 * Redux
-
-Навигация:
 * React Router Dom
-
-Стили:
 * SCSS
-
-Сборщик:
-* Webpack (create-react-app)
-
-Пакетный менеджер:
-* Npm
-
-## ОПИСАНИЕ ВЕРСИЙ
-Скоро...
+* Vite
 
 
 
