@@ -5,6 +5,7 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
    plugins: [react()],
+   base: 'https://l-k-r-n.github.io/Nebula/',
    resolve: {
       alias: {
          '@': path.resolve(__dirname, 'src'),

@@ -32,20 +32,17 @@ export const TodoCard: React.FC<Props> = ({ card, project }) => {
       id: card.id,
    });
    const [isChanging, setIsChanging] = useState(false);
-   const [cardActions, setCardActions] = useState<IAction[]>([
+   const [cardActions] = useState<IAction[]>([
       {
          title: 'Удалить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleDelete,
       },
       {
          title: 'Изменить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleChange,
       },
       {
          title: 'Добавить задачу',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleAddTask,
       },
    ]);
@@ -67,28 +64,7 @@ export const TodoCard: React.FC<Props> = ({ card, project }) => {
 
    function handleAddTask() {
       setIsAddingTask(true);
-      // console.log("Пост изменен")
    }
-   // const dragEndHandler = (event: DragEndEvent) => {
-
-   //     console.log('dragEnd', event);
-   //     const {active, over} = event;
-   //     if (active.id === over?.id) {
-   //         return;
-   //     }
-
-   //         const sorting = (tasks: ITask[]) => {
-   //             const oldIndex = tasks.findIndex((task) => task.id === active.id);
-   //             const newIndex = tasks.findIndex((task) => task.id === over?.id);
-   //             return arrayMove(tasks, oldIndex, newIndex)
-   //         }
-   //         dispatch(updateTasks({
-   //             projectId: project.id,
-   //             cardTitle: card.title,
-   //             tasks: sorting(card.tasks)
-   //         }))
-
-   // }
 
    const style = {
       transform: CSS.Transform.toString(transform),
@@ -100,26 +76,19 @@ export const TodoCard: React.FC<Props> = ({ card, project }) => {
          className="todo-card"
          style={style}
          ref={setNodeRef}
-         // eslint-disable-next-line react/jsx-props-no-spreading
          {...attributes}
       >
          <div className="todo-card__header todo-card__header_queue">
             <div
                className="todo-card__handle"
                ref={setActivatorNodeRef}
-               // eslint-disable-next-line react/jsx-props-no-spreading
                {...listeners}
             />
             <h3 className="todo-card__title">{card.title}</h3>
             <MoreBtn list={cardActions} color="white" />
          </div>
 
-         <div
-            className="todo-card__main"
-            // ref={setNodeRef}
-         >
-            {/* {children} */}
-            {/* <DndContext > */}
+         <div className="todo-card__main">
             <SortableContext items={card.tasks}>
                {card.tasks?.map((task) => (
                   <TaskItem
@@ -130,7 +99,6 @@ export const TodoCard: React.FC<Props> = ({ card, project }) => {
                   />
                ))}
             </SortableContext>
-            {/* </DndContext> */}
          </div>
 
          <ChangeCardModal

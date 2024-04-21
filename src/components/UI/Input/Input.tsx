@@ -20,8 +20,7 @@ interface Props<TFieldValues extends FieldValues> {
 export function Input<TFieldValues extends FieldValues>({
    title,
    field,
-   name,
-   errors,
+
    value,
    onChange,
 }: Props<TFieldValues>) {

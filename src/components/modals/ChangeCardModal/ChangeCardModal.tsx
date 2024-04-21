@@ -58,7 +58,6 @@ export const ChangeCardModal: React.FC<Props> = ({
                name="title"
                rules={{ required: 'Введите название' }}
                label="title"
-               fieldErrorName={{ type: 'min' }}
                title="Введите название"
             />
 

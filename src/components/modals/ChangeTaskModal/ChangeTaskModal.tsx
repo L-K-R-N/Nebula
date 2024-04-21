@@ -1,13 +1,11 @@
 import './ChangeTaskModal.styles.scss';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import Select from 'react-select/creatable';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import DatePicker from 'react-date-picker';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Modal } from '@/components/UI/Modal';
-import { INote, IProject, ITask, ITodoCard } from '@/models/Project.types';
+import { IProject, ITask, ITodoCard } from '@/models/Project.types';
 import { updateTask } from '@/store/actionCreators/Projects';
-import { SelectStyles } from '@/components/UI/StylizedMultiSelect/StylizedMultiSelect';
 import {
    ITaskInputs,
    StyledCalendar,
@@ -34,8 +32,6 @@ export const ChangeTaskModal: React.FC<Props> = ({
    card,
 }) => {
    const dispatch = useAppDispatch();
-   // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
-   const [taskNotes, setTaskNotes] = useState<INote[]>([]);
 
    const {
       control,

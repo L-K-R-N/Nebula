@@ -6,14 +6,13 @@ import { setProjects } from '@/store/reducers/ProjectsSlice';
 import { Modal } from '@/components/UI/Modal';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { InputController } from '@/components/UI/InputController/InputController';
 import { Button } from '@/components/UI/Button/Button';
 import { Form } from '../Form/Form';
 import { SelectController } from '@/components/UI/SelectController/SelectController';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-// import CreatableSelect from 'react-select/Creatable';
 interface Props {
    isShow: boolean;
    setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -50,7 +49,6 @@ const formSchema = z.object({
          id: z.number().optional(),
       })
       .array(),
-   // .optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -59,8 +57,6 @@ export const AddProjectModal: React.FC<Props> = ({ isShow, setShow }) => {
    const dispatch = useAppDispatch();
    const { projects } = useAppSelector((state) => state.ProjectsReducer);
    const currentDate = new Date();
-   const ref = useRef<HTMLInputElement | null>(null);
-   // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
    const [projectNotes, setProjectNotes] = useState<INote[]>([]);
    const {
       handleSubmit,

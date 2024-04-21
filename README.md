@@ -1,4 +1,6 @@
+# Nebula
 
+<<<<<<< HEAD
 
 <p align="right"> 
 Описание на русском | <a href="README_ENG.md">English description</a> 
@@ -20,3 +22,19 @@
 
 
 
+=======
+Доска задач
+
+<br>
+
+## СТЕК ПРОЕКТА
+
+-  TypeScript
+-  React
+-  Redux Toolkit
+-  React Router Dom
+-  React Hook Form
+-  SCSS & Styled Components
+-  Vite
+-  Prettier & ESLint & Husky
+>>>>>>> cd98b5e (Fixed bugs)

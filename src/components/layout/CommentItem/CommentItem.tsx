@@ -71,35 +71,28 @@ export const CommentItem: React.FC<Props> = ({
       setIsLikeActive(!!isMeLiked);
    }, [comment.likes]);
 
-   const [myCommentActions, setMyCommentActions] = useState<IAction[]>([
+   const [myCommentActions] = useState<IAction[]>([
       {
          title: 'Удалить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleDelete,
       },
       {
          title: 'Изменить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleChange,
       },
       {
          title: 'Копировать',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleCopy,
       },
    ]);
 
-   const [notMineCommentActions, setNotMineCommentActions] = useState<
-      IAction[]
-   >([
+   const [notMineCommentActions] = useState<IAction[]>([
       {
          title: 'Копировать',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleCopy,
       },
       {
          title: 'Cкрыть',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleCopy,
       },
    ]);

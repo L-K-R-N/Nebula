@@ -16,7 +16,6 @@ import { InputController } from '@/components/UI/InputController/InputController
 import { SelectController } from '@/components/UI/SelectController/SelectController';
 import { useState } from 'react';
 
-// import CreatableSelect from 'react-select/Creatable';
 interface Props {
    isShow: boolean;
    setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -58,12 +57,8 @@ export const AddTaskModal: React.FC<Props> = ({
 }) => {
    const dispatch = useAppDispatch();
    const currentDate = new Date();
-   // const [sortingOptions, setSortingOptions] = useState<IOption<string>[]>(options)
 
-   // const onChangeDate = (date: ) => {
-   //     const dateValue = date.toDate()
-   // }
-   const [taskNotes, setTaskNotes] = useState<INote[]>([]);
+   const [taskNotes] = useState<INote[]>([]);
    const {
       handleSubmit,
       control,
@@ -97,7 +92,6 @@ export const AddTaskModal: React.FC<Props> = ({
          }),
       );
 
-      // console.log(project.tasks)
       reset();
       setValue('title', '');
       setValue('desc', '');
@@ -105,13 +99,6 @@ export const AddTaskModal: React.FC<Props> = ({
       setValue('date', new Date());
       setShow(false);
    };
-
-   // const handleChangeNotes = (newValue: SingleValue<IOption<string>>) => {
-   //     dispatch(setSorting(newValue?.value === 'desc' ||
-   //                         newValue?.value === 'title' ||
-   //                         newValue?.value === 'id' ? newValue?.value : sortingBy))
-   //     // console.log(sortingBy)
-   // }
 
    return (
       <Modal title="Создание задачи" setShow={setShow} isShow={isShow}>

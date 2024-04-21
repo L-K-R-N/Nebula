@@ -1,6 +1,5 @@
 import './Notes.styles.scss';
 import { FaMarker } from 'react-icons/fa';
-import { useState } from 'react';
 import { Note } from '@/components/UI/Note';
 import { INote, IProject } from '@/models/Project.types';
 

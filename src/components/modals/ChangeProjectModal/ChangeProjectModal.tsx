@@ -1,12 +1,10 @@
 import './ChangeProjectModal.styles.scss';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import Select from 'react-select/creatable';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Modal } from '@/components/UI/Modal';
 import { IProject, TProjectInputs } from '@/models/Project.types';
 import { updateProject } from '@/store/actionCreators/Projects';
-import { SelectStyles } from '@/components/UI/StylizedMultiSelect/StylizedMultiSelect';
 import { InputController } from '@/components/UI/InputController/InputController';
 import { Form } from '../Form/Form';
 import { Button } from '@/components/UI/Button/Button';
@@ -66,7 +64,6 @@ export const ChangeProjectModal: React.FC<Props> = ({
                name="title"
                rules={{ required: 'Введите название' }}
                label="title"
-               fieldErrorName={{ type: 'min' }}
                title="Введите название"
             />
 
@@ -76,14 +73,12 @@ export const ChangeProjectModal: React.FC<Props> = ({
                name="desc"
                rules={{ required: 'Введите описание' }}
                label="desc"
-               fieldErrorName={{ type: 'min' }}
                title="Введите описание"
             />
 
             <SelectController
                errors={errors}
                control={control}
-               fieldErrorName={{ type: 'min' }}
                name="notes"
                isMulti={true}
                options={project.notes}

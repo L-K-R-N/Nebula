@@ -25,15 +25,13 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
    const { projects } = useAppSelector((state) => state.ProjectsReducer);
    const [isImportant, setIsImportant] = useState(project.isImportant);
    const [isChanging, setIsChanging] = useState(false);
-   const [projectActions, setProjectActions] = useState<IAction[]>([
+   const [projectActions] = useState<IAction[]>([
       {
          title: 'Удалить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleDelete,
       },
       {
          title: 'Изменить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleChange,
       },
    ]);

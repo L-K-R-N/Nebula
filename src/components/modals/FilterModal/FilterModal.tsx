@@ -55,7 +55,6 @@ export const FilterModal: React.FC<Props> = ({ isShow, setShow }) => {
             <SelectController
                errors={errors}
                control={control}
-               fieldErrorName={{ type: 'min' }}
                name="sorting"
                isMulti={false}
                options={options}

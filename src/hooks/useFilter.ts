@@ -11,7 +11,14 @@ export const useSortProjects = (projects: IProject[], sortingBy: TSorting) => {
          return newProjects.sort((a, b) => a.title.localeCompare(b.title));
 
       case 'desc':
-         return newProjects.sort((a, b) => a.desc.localeCompare(b.desc));
+         return newProjects.sort((a, b) => {
+            let returnedProject: number = -1;
+
+            if (a.desc && b.desc) {
+               returnedProject = a.desc?.localeCompare(b.desc);
+            }
+            return returnedProject;
+         });
 
       case 'date':
          return newProjects.sort((a, b) => compareAsc(b.date, a.date));

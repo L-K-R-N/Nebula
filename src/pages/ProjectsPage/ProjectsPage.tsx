@@ -3,7 +3,6 @@ import './ProjectsPage.styles.scss';
 import { useSearchProject, useSortProjects } from '@/hooks/useFilter';
 import { ProjectsControl } from '@/components/layout/Control/ProjectsControl';
 import { Projects } from '@/components/layout/Projects/Projects';
-import { Input } from '@/components/UI/Input/Input';
 
 interface Props {}
 
@@ -17,7 +16,6 @@ const ProjectsPage: React.FC<Props> = () => {
       <div className="project-page">
          <ProjectsControl />
          <Projects projects={searchedProjects} />
-         
       </div>
    );
 };

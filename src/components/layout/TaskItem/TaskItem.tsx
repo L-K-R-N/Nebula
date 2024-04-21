@@ -26,15 +26,13 @@ export const TaskItem: React.FC<Props> = ({ task, project, card }) => {
    const dispatch = useAppDispatch();
    const [isChanging, setIsChanging] = useState(false);
    const [isCommentsShow, setIsCommentsShow] = useState(false);
-   const [projectActions, setProjectActions] = useState<IAction[]>([
+   const [projectActions] = useState<IAction[]>([
       {
          title: 'Удалить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleDelete,
       },
       {
          title: 'Изменить',
-         // eslint-disable-next-line @typescript-eslint/no-use-before-define
          action: handleChange,
       },
    ]);
